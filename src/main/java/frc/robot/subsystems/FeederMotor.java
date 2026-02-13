@@ -11,8 +11,11 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.units.MutableMeasure;
+import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 
 
 public class FeederMotor extends SubsystemBase{
@@ -31,12 +34,12 @@ public class FeederMotor extends SubsystemBase{
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
         ShooterMotor = new TalonFX(11, "DriveCan");
         ShooterMotor.getConfigurator().apply(TalonFXConfig);
-        
+
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0.2; // Add 0.25 V output to overcome static friction
-        slot0.kV = 0.117; // A velocity target of 1 rps results in 0.12 V output
-        slot0.kA = 0.873; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 0.6; // A position error of 0.2 rotations results in 12 V output
+        slot0.kV = 0.104; // A velocity target of 1 rps results in 0.12 V output
+        slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
+        slot0.kP = 0.3; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
 
@@ -54,7 +57,6 @@ public class FeederMotor extends SubsystemBase{
             System.out.println("Could not configure device. Error: " + status.toString());
         }
     }
-
  
     public void periodic() {
                 if (m_printCount++ > 10) {
@@ -71,7 +73,4 @@ public class FeederMotor extends SubsystemBase{
         ShooterMotor.set(setpoint);
         // IntakeMotor2.set(setpoint);
     }
-        
-
-
 }
