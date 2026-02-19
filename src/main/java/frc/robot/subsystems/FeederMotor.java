@@ -79,7 +79,7 @@ public class FeederMotor extends SubsystemBase{
           }
 
     }
-    public void setShooterSpeed(double velSetpoint, double accSetpoint){
+    public void setFeederSpeed(double velSetpoint, double accSetpoint){
         FeederMotor.setControl(m_vdReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));
       }
 

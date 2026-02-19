@@ -27,7 +27,7 @@ public class FeederRun extends Command {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        s_FeederMotor.setShooterSpeed(m_FeederVel, m_FeederAcc);
+        s_FeederMotor.setFeederSpeed(m_FeederVel, m_FeederAcc);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -39,7 +39,7 @@ public class FeederRun extends Command {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_FeederMotor.setShooterSpeed(0, m_FeederAcc);
+        s_FeederMotor.setFeederSpeed(0, m_FeederAcc);
         // s_TestShooterMotor.IntakeMotorOneRun(0);
     }
 
