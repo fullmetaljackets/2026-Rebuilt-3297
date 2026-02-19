@@ -16,11 +16,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.FeederRun;
+import frc.robot.commands.IntakeRun;
 import frc.robot.commands.ShooterRun;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.FeederMotor;
+import frc.robot.subsystems.IntakeMotor;
 import frc.robot.subsystems.ShooterMotor;
+import frc.robot.subsystems.WinchMotor;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -41,6 +44,8 @@ public class RobotContainer {
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     public final ShooterMotor s_ShooterMotor = new ShooterMotor();
     public final FeederMotor s_FeederMotor = new FeederMotor();
+    public final IntakeMotor s_IntakeMotor = new IntakeMotor();
+    public final WinchMotor s_WinchMotor = new WinchMotor();
 
     public RobotContainer() {
         configureBindings();
@@ -72,10 +77,10 @@ public class RobotContainer {
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
-        DriveStick.back().and(DriveStick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
-        DriveStick.back().and(DriveStick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
-        DriveStick.start().and(DriveStick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
-        DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
+        // DriveStick.back().and(DriveStick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
+        // DriveStick.back().and(DriveStick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
+        // DriveStick.start().and(DriveStick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
+        // DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // Reset the field-centric heading on left bumper press.
         DriveStick.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
@@ -83,11 +88,13 @@ public class RobotContainer {
         DriveStick.rightTrigger().whileTrue(new ShooterRun(42, 1000, s_ShooterMotor));
         DriveStick.leftTrigger().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
 
+        CopilotStick.rightTrigger().whileTrue(new IntakeRun(20, 1000, s_IntakeMotor));
+
         // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
-        CopilotStick.back().and(CopilotStick.y()).whileTrue(s_FeederMotor.sysIdDynamic(Direction.kForward));
-        CopilotStick.back().and(CopilotStick.x()).whileTrue(s_FeederMotor.sysIdDynamic(Direction.kReverse));
-        CopilotStick.start().and(CopilotStick.y()).whileTrue(s_FeederMotor.sysIdQuasistatic(Direction.kForward));
-        CopilotStick.start().and(CopilotStick.x()).whileTrue(s_FeederMotor.sysIdQuasistatic(Direction.kReverse));
+        // CopilotStick.back().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kForward));
+        // CopilotStick.back().and(CopilotStick.x()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kReverse));
+        // CopilotStick.start().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdQuasistatic(Direction.kForward));
+        // CopilotStick.start().and(CopilotStick.x()).whileTrue(s_IntakeMotor.sysIdQuasistatic(Direction.kReverse));
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }

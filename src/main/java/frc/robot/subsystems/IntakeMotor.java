@@ -39,13 +39,13 @@ public class IntakeMotor extends SubsystemBase{
         IntakeMotor.getConfigurator().apply(TalonFXConfig);
 
         FeedbackConfigs fdc = TalonFXConfig.Feedback;
-        fdc.SensorToMechanismRatio = 1.7143; // 1 rotation of the sensor results in 1.33 rotations of the mechanism
+        fdc.SensorToMechanismRatio = 1.7143; // 1 rotation of the sensor results in 1.7143 rotations of the mechanism
 
         Slot0Configs slot0 = TalonFXConfig.Slot0;
-        slot0.kS = 0; // Add 0.25 V output to overcome static friction
-        slot0.kV = 0; // A velocity target of 1 rps results in 0.12 V output
-        slot0.kA = 0; // An acceleration of 1 rps/s requires 0.01 V output
-        slot0.kP = 0; // A position error of 0.2 rotations results in 12 V output
+        slot0.kS = 0.17876; // Add 0.25 V output to overcome static friction
+        slot0.kV = 0.15841; // A velocity target of 1 rps results in 0.12 V output
+        slot0.kA = 0.015887; // An acceleration of 1 rps/s requires 0.01 V output
+        slot0.kP = 0.3; // A position error of 0.2 rotations results in 12 V output
         slot0.kI = 0; // No output for integrated error
         slot0.kD = 0; // A velocity error of 1 rps results in 0.5 V output
 
@@ -94,12 +94,12 @@ public class IntakeMotor extends SubsystemBase{
             Volts.of(6), // Use dynamic step voltage of 6 V
             null,        // Use default timeout (10 s)
             // Log state with SignalLogger class
-            state -> SignalLogger.writeString("SysIdFeeder_State", state.toString())
+            state -> SignalLogger.writeString("SysIdIntake_State", state.toString())
         ),
         new SysIdRoutine.Mechanism(
             output -> this.setVoltageForSysId(output.in(Volts)),
             log -> {
-                log.motor("Feeder")
+                log.motor("Intake")
                     .voltage(Volts.of(IntakeMotor.getMotorVoltage().getValueAsDouble()))
                     .angularPosition(Rotations.of(IntakeMotor.getPosition().getValueAsDouble()))
                     .angularVelocity(RotationsPerSecond.of(IntakeMotor.getVelocity().getValueAsDouble()));
