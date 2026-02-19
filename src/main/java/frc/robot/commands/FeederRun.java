@@ -11,13 +11,13 @@ import frc.robot.subsystems.FeederMotor;
 public class FeederRun extends Command {
 
     private final FeederMotor s_FeederMotor;
-    private double m_ShooterVel;
-    private double m_ShooterAcc;
+    private double m_FeederVel;
+    private double m_FeederAcc;
  
 
-    public FeederRun(double ShooterVel, double ShooterAcc, FeederMotor subsystem) {
-        m_ShooterVel = ShooterVel;
-        m_ShooterAcc = ShooterAcc;
+    public FeederRun(double FeederVel, double FeederAcc, FeederMotor subsystem) {
+        m_FeederVel = FeederVel;
+        m_FeederAcc = FeederAcc;
 
         s_FeederMotor = subsystem;
         addRequirements(s_FeederMotor);
@@ -27,19 +27,19 @@ public class FeederRun extends Command {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        s_FeederMotor.setShooterSpeed(m_ShooterVel, m_ShooterAcc);
+        s_FeederMotor.setShooterSpeed(m_FeederVel, m_FeederAcc);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // s_TestShooterMotor.IntakeMotorOneRun(m_ShooterVel);
+        // s_TestShooterMotor.IntakeMotorOneRun(m_FeederVel);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_FeederMotor.setShooterSpeed(0, m_ShooterAcc);
+        s_FeederMotor.setShooterSpeed(0, m_FeederAcc);
         // s_TestShooterMotor.IntakeMotorOneRun(0);
     }
 

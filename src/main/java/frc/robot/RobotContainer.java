@@ -80,8 +80,14 @@ public class RobotContainer {
         // Reset the field-centric heading on left bumper press.
         DriveStick.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
-        DriveStick.rightTrigger().whileTrue(new ShooterRun(35, 1000, s_ShooterMotor));
-        DriveStick.leftTrigger().whileTrue(new FeederRun(33, 1000, s_FeederMotor));
+        DriveStick.rightTrigger().whileTrue(new ShooterRun(42, 1000, s_ShooterMotor));
+        DriveStick.leftTrigger().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
+
+        // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
+        CopilotStick.back().and(CopilotStick.y()).whileTrue(s_FeederMotor.sysIdDynamic(Direction.kForward));
+        CopilotStick.back().and(CopilotStick.x()).whileTrue(s_FeederMotor.sysIdDynamic(Direction.kReverse));
+        CopilotStick.start().and(CopilotStick.y()).whileTrue(s_FeederMotor.sysIdQuasistatic(Direction.kForward));
+        CopilotStick.start().and(CopilotStick.x()).whileTrue(s_FeederMotor.sysIdQuasistatic(Direction.kReverse));
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }
