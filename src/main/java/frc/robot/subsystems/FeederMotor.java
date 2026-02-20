@@ -60,7 +60,7 @@ public class FeederMotor extends SubsystemBase{
         // set Motion Magic Velocity settings
         MotionMagicConfigs motionMagicConfigs = TalonFXConfig.MotionMagic;
         motionMagicConfigs.MotionMagicAcceleration = 10;
-        motionMagicConfigs.MotionMagicJerk = 100;
+        motionMagicConfigs.MotionMagicJerk = 0;
 
         StatusCode status = StatusCode.StatusCodeNotInitialized;
         for (int i = 0; i < 5; ++i) {
