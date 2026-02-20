@@ -27,7 +27,7 @@ import frc.robot.subsystems.WinchMotor;
 
 public class RobotContainer {
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
+    private double MaxAngularRate = RotationsPerSecond.of(0.5).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -88,7 +88,8 @@ public class RobotContainer {
         DriveStick.rightTrigger().whileTrue(new ShooterRun(43, 1000, s_ShooterMotor));
         DriveStick.leftTrigger().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
 
-        CopilotStick.rightTrigger().whileTrue(new IntakeRun(45, 1000, s_IntakeMotor));
+        DriveStick.rightBumper().whileTrue(new IntakeRun(35, 1000, s_IntakeMotor));
+        CopilotStick.rightTrigger().whileTrue(new IntakeRun(-20, 1000, s_IntakeMotor));
 
         // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
         // CopilotStick.back().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kForward));
