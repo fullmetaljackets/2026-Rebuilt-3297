@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "start spot to depot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Shoot to right bump"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Over right bump"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "middle fuel"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Over Left Bump to Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
