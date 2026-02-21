@@ -10,6 +10,7 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -17,7 +18,10 @@ import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.IntakeRun;
+import frc.robot.commands.IntakeRunPercentage;
 import frc.robot.commands.ShooterRun;
+import frc.robot.commands.WinchRun;
+import frc.robot.commands.WinchToSetpoint;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.FeederMotor;
@@ -88,8 +92,18 @@ public class RobotContainer {
         DriveStick.rightTrigger().whileTrue(new ShooterRun(43, 1000, s_ShooterMotor));
         DriveStick.leftTrigger().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
 
-        DriveStick.rightBumper().whileTrue(new IntakeRun(35, 1000, s_IntakeMotor));
+        // CopilotStick.leftTrigger().whileTrue(new IntakeRun(35, 1000, s_IntakeMotor));
+        CopilotStick.leftTrigger().whileTrue(new IntakeRunPercentage(.9, s_IntakeMotor));
+        // DriveStick.y().and(DriveStick.rightBumper().whileTrue(new IntakeRun()));
+        CopilotStick.leftBumper().whileTrue(new FeederRun(-20, 1000, s_FeederMotor));
+
         CopilotStick.rightTrigger().whileTrue(new IntakeRun(-20, 1000, s_IntakeMotor));
+
+        CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
+        CopilotStick.povUp().whileTrue(new WinchRun(-0.15, s_WinchMotor));
+
+        CopilotStick.povDown().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
+        CopilotStick.povUp().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
 
         // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
         // CopilotStick.back().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kForward));

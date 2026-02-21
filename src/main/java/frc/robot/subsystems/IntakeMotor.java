@@ -88,6 +88,7 @@ public class IntakeMotor extends SubsystemBase{
         // IntakeMotor2.set(setpoint);
     }
 
+
     private final SysIdRoutine m_sysIdRoutine = new SysIdRoutine(
         new SysIdRoutine.Config(
             null,        // Use default ramp rate (1 V/s)
