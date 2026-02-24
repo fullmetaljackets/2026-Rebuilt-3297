@@ -8,8 +8,11 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -45,13 +48,23 @@ public class RobotContainer {
     private final CommandXboxController DriveStick = new CommandXboxController(0);
     private final CommandXboxController CopilotStick = new CommandXboxController(1);
 
-    public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
-    public final ShooterMotor s_ShooterMotor = new ShooterMotor();
-    public final FeederMotor s_FeederMotor = new FeederMotor();
-    public final IntakeMotor s_IntakeMotor = new IntakeMotor();
-    public final WinchMotor s_WinchMotor = new WinchMotor();
+    private final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+    private final ShooterMotor s_ShooterMotor = new ShooterMotor();
+    private final FeederMotor s_FeederMotor = new FeederMotor();
+    private final IntakeMotor s_IntakeMotor = new IntakeMotor();
+    private final WinchMotor s_WinchMotor = new WinchMotor();
+    private final SendableChooser<Command> autoChooser;
+
 
     public RobotContainer() {
+        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(0.9, s_IntakeMotor));
+        NamedCommands.registerCommand("ShooterRun", new ShooterRun(43, 1000, s_ShooterMotor));
+        NamedCommands.registerCommand("FeederRun", new FeederRun(20, 1000, s_FeederMotor));
+        NamedCommands.registerCommand("WinchRun", new WinchRun(-0.15, s_WinchMotor));
+
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
+
         configureBindings();
     }
 
@@ -115,21 +128,22 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        // Simple drive forward auton
-        final var idle = new SwerveRequest.Idle();
-        return Commands.sequence(
-            // Reset our field centric heading to match the robot
-            // facing away from our alliance station wall (0 deg).
-            drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
-            // Then slowly drive forward (away from us) for 5 seconds.
-            drivetrain.applyRequest(() ->
-                drive.withVelocityX(0.5)
-                    .withVelocityY(0)
-                    .withRotationalRate(0)
-            )
-            .withTimeout(5.0),
-            // Finally idle for the rest of auton
-            drivetrain.applyRequest(() -> idle)
-        );
+        return autoChooser.getSelected();
+        // // Simple drive forward auton
+        // final var idle = new SwerveRequest.Idle();
+        // return Commands.sequence(
+        //     // Reset our field centric heading to match the robot
+        //     // facing away from our alliance station wall (0 deg).
+        //     drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
+        //     // Then slowly drive forward (away from us) for 5 seconds.
+        //     drivetrain.applyRequest(() ->
+        //         drive.withVelocityX(0.5)
+        //             .withVelocityY(0)
+        //             .withRotationalRate(0)
+        //     )
+        //     .withTimeout(5.0),
+        //     // Finally idle for the rest of auton
+        //     drivetrain.applyRequest(() -> idle)
+        // );
     }
 }
