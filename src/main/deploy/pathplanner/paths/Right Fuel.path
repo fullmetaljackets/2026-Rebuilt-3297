@@ -3,50 +3,40 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.361200564971751,
-        "y": 2.151822033898305
+        "x": 7.667895480225988,
+        "y": 1.2038276836158195
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.641511299435024,
-        "y": -2.5881497175141246
+        "x": 7.716484765940274,
+        "y": 2.3537741121872466
       },
       "isLocked": false,
-      "linkedName": "bump1"
+      "linkedName": "Fuel Right"
     },
     {
       "anchor": {
-        "x": 7.629463276841289,
-        "y": 5.380127118650297
+        "x": 7.667895480225988,
+        "y": 6.917415254237288
       },
       "prevControl": {
-        "x": 7.642274011299435,
-        "y": 4.701158192090395
+        "x": 7.667895480225988,
+        "y": 6.123790254237289
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "full mid"
+      "linkedName": "Fuel Left"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.05,
-      "rotationDegrees": -89.96781782032068
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "",
-      "waypointRelativePos": 0.18414918414918408,
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "IntakeRun"
-        }
-      }
+      "command": null
     }
   ],
   "globalConstraints": {
@@ -59,13 +49,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -88.69804732742104
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 1.6365770416167182
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

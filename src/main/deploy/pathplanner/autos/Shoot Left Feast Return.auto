@@ -5,39 +5,39 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "start spot to depot"
+            "name": "ShooterRun"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "shoot"
+            "pathName": "Start Shoot Left"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Shoot to right bump"
+            "pathName": "BumpL1 to Left Fuel"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Over right bump"
+            "pathName": "Left Fuel"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "middle fuel"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Over Left Bump to Shoot"
+            "pathName": "Fuel Right to Bump"
           }
         }
       ]
