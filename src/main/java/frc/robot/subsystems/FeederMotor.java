@@ -9,6 +9,7 @@ import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.MotionMagicVelocityTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.MotionMagicVelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
@@ -27,6 +28,7 @@ public class FeederMotor extends SubsystemBase{
     private TalonFXConfiguration TalonFXConfig;
     private MotorOutputConfigs MotorOutputConfig;
     final MotionMagicVelocityVoltage m_vdReq = new MotionMagicVelocityVoltage(0);
+    final MotionMagicVelocityTorqueCurrentFOC m_vdFOCReq = new MotionMagicVelocityTorqueCurrentFOC(0);
     private int m_printCount = 0;
 
     public FeederMotor() {
@@ -81,9 +83,11 @@ public class FeederMotor extends SubsystemBase{
     }
     public void setFeederSpeed(double velSetpoint, double accSetpoint){
         FeederMotor.setControl(m_vdReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));
-      }
+        // Ryan - give this FOC profile a try
+        // FeederMotor.setControl(m_vdFOCReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));
+        }
 
-    public void IntakeMotorOneRun(double setpoint){
+    public void FeederMotorRun(double setpoint){
         FeederMotor.set(setpoint);
         // IntakeMotor2.set(setpoint);
     }

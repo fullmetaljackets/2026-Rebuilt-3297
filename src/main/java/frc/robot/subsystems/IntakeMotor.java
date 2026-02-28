@@ -9,6 +9,7 @@ import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.MotionMagicVelocityTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.MotionMagicVelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
@@ -27,12 +28,13 @@ public class IntakeMotor extends SubsystemBase{
     private TalonFXConfiguration TalonFXConfig;
     private MotorOutputConfigs MotorOutputConfig;
     final MotionMagicVelocityVoltage m_vdReq = new MotionMagicVelocityVoltage(0);
+    final MotionMagicVelocityTorqueCurrentFOC m_vdFOCReq = new MotionMagicVelocityTorqueCurrentFOC(0);
     private int m_printCount = 0;
 
     public IntakeMotor() {
         TalonFXConfig = new TalonFXConfiguration();
         MotorOutputConfig = new MotorOutputConfigs();
-        MotorOutputConfig.Inverted = InvertedValue.Clockwise_Positive;
+        MotorOutputConfig.Inverted = InvertedValue.CounterClockwise_Positive;
         MotorOutputConfig.NeutralMode = NeutralModeValue.Coast;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
         IntakeMotor = new TalonFX(14, "DriveCan");
@@ -80,7 +82,9 @@ public class IntakeMotor extends SubsystemBase{
 
     }
     public void setShooterSpeed(double velSetpoint, double accSetpoint){
-        IntakeMotor.setControl(m_vdReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));
+        IntakeMotor.setControl(m_vdReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0).withEnableFOC(true));
+        // Ryan - give this FOC profile a try
+        //        IntakeMotor.setControl(m_vdFOCReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));
       }
 
     public void IntakeMotorOneRun(double setpoint){

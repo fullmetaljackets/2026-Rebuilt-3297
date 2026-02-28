@@ -4,7 +4,9 @@
 
 package frc.robot;
 
-import static edu.wpi.first.units.Units.*;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RadiansPerSecond;
+import static edu.wpi.first.units.Units.RotationsPerSecond;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -15,17 +17,17 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
-import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.commands.FeederRun;
-import frc.robot.commands.IntakeRun;
 import frc.robot.commands.IntakeRunPercentage;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
+import frc.robot.commands.grouped.IntakeRun;
+import frc.robot.commands.grouped.Shoot;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.BackIntakeMotor;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.FeederMotor;
 import frc.robot.subsystems.IntakeMotor;
@@ -52,15 +54,16 @@ public class RobotContainer {
     private final ShooterMotor s_ShooterMotor = new ShooterMotor();
     private final FeederMotor s_FeederMotor = new FeederMotor();
     private final IntakeMotor s_IntakeMotor = new IntakeMotor();
+    private final BackIntakeMotor s_BackIntakeMotor = new BackIntakeMotor();
     private final WinchMotor s_WinchMotor = new WinchMotor();
     private final SendableChooser<Command> autoChooser;
 
 
     public RobotContainer() {
-        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(0.9, s_IntakeMotor));
-        NamedCommands.registerCommand("ShooterRun", new ShooterRun(43, 1000, s_ShooterMotor));
-        NamedCommands.registerCommand("FeederRun", new FeederRun(20, 1000, s_FeederMotor));
-        NamedCommands.registerCommand("WinchRun", new WinchRun(-0.15, s_WinchMotor));
+        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(0.5, s_IntakeMotor));
+        NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(43, 1000, s_ShooterMotor));
+        NamedCommands.registerCommand("Shoot", new Shoot(s_ShooterMotor, s_FeederMotor, s_WinchMotor));
+        // NamedCommands.registerCommand("WinchRun", new WinchRun(-0.15, s_WinchMotor));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -100,24 +103,21 @@ public class RobotContainer {
         // DriveStick.start().and(DriveStick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // Reset the field-centric heading on left bumper press.
-        DriveStick.leftBumper().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
+        DriveStick.a().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
 
-        DriveStick.rightTrigger().whileTrue(new ShooterRun(43, 1000, s_ShooterMotor));
-        DriveStick.leftTrigger().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
-
-        // CopilotStick.leftTrigger().whileTrue(new IntakeRun(35, 1000, s_IntakeMotor));
-        CopilotStick.leftTrigger().whileTrue(new IntakeRunPercentage(.9, s_IntakeMotor));
-        // DriveStick.y().and(DriveStick.rightBumper().whileTrue(new IntakeRun()));
-        CopilotStick.leftBumper().whileTrue(new FeederRun(-20, 1000, s_FeederMotor));
-
-        CopilotStick.rightTrigger().whileTrue(new IntakeRun(-20, 1000, s_IntakeMotor));
-
+        //Shooter
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(43, 1000, s_ShooterMotor));
+        DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
+        //Intake
+        DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
+        //Winch
         CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
         CopilotStick.povUp().whileTrue(new WinchRun(-0.15, s_WinchMotor));
-
         CopilotStick.povDown().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
         CopilotStick.povUp().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
 
+        //manuel controlls
+        
         // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
         // CopilotStick.back().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kForward));
         // CopilotStick.back().and(CopilotStick.x()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kReverse));
