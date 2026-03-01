@@ -60,7 +60,7 @@ public class RobotContainer {
 
 
     public RobotContainer() {
-        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(0.5, s_IntakeMotor));
+        NamedCommands.registerCommand("IntakeRun", new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(43, 1000, s_ShooterMotor));
         NamedCommands.registerCommand("Shoot", new Shoot(s_ShooterMotor, s_FeederMotor, s_WinchMotor));
         // NamedCommands.registerCommand("WinchRun", new WinchRun(-0.15, s_WinchMotor));
@@ -111,13 +111,13 @@ public class RobotContainer {
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         //Winch
-        CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
-        CopilotStick.povUp().whileTrue(new WinchRun(-0.15, s_WinchMotor));
+        CopilotStick.povDown().whileTrue(new WinchRun(0.2, s_WinchMotor));
+        CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
         CopilotStick.povDown().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
         CopilotStick.povUp().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
 
         //manuel controlls
-        
+
         // Shooter SysId bindings - CopilotStick back + X/Y for dynamic, start + X/Y for quasistatic
         // CopilotStick.back().and(CopilotStick.y()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kForward));
         // CopilotStick.back().and(CopilotStick.x()).whileTrue(s_IntakeMotor.sysIdDynamic(Direction.kReverse));

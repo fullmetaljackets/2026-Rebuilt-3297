@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.716484765940274,
-        "y": 2.3537741121872466
+        "x": 7.667895480225988,
+        "y": 2.3548001886177437
       },
       "isLocked": false,
       "linkedName": "Fuel Right"
@@ -36,12 +36,17 @@
       "name": "IntakeRun",
       "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 0.6,
+    "maxAcceleration": 0.6,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -55,7 +60,7 @@
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -89.56695283317812
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

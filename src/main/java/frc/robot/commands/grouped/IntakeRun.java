@@ -11,8 +11,8 @@ public class IntakeRun extends ParallelCommandGroup{
     public IntakeRun(IntakeMotor s_IntakeMotor, BackIntakeMotor s_BackIntakeMotor){
 
         addCommands(
-            new IntakeRunPercentage(0.5, s_IntakeMotor),
-            new BackIntakeRunPercentage(-0.5, s_BackIntakeMotor)
+            new IntakeRunPercentage(0.7, s_IntakeMotor),
+            new BackIntakeRunPercentage(-0.7, s_BackIntakeMotor)
         );
     }
 

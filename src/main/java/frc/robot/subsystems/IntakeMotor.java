@@ -35,7 +35,7 @@ public class IntakeMotor extends SubsystemBase{
         TalonFXConfig = new TalonFXConfiguration();
         MotorOutputConfig = new MotorOutputConfigs();
         MotorOutputConfig.Inverted = InvertedValue.CounterClockwise_Positive;
-        MotorOutputConfig.NeutralMode = NeutralModeValue.Coast;
+        MotorOutputConfig.NeutralMode = NeutralModeValue.Brake;
         TalonFXConfig.withMotorOutput(MotorOutputConfig);
         IntakeMotor = new TalonFX(14, "DriveCan");
         IntakeMotor.getConfigurator().apply(TalonFXConfig);

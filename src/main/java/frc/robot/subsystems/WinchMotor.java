@@ -42,7 +42,7 @@ public class WinchMotor extends SubsystemBase{
 
         SoftwareLimitSwitchConfigs softLimit =TalonFXConfig.SoftwareLimitSwitch;
         softLimit.ForwardSoftLimitEnable = true;
-        softLimit.ForwardSoftLimitThreshold = -2;
+        softLimit.ForwardSoftLimitThreshold = -1;
         softLimit.ReverseSoftLimitEnable = true;
         softLimit.ReverseSoftLimitThreshold = -10;
 
