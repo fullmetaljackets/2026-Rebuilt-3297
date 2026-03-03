@@ -40,8 +40,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 0.6,
+    "maxAcceleration": 0.6,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -49,13 +49,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.07393382489983
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 89.3219073667122
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

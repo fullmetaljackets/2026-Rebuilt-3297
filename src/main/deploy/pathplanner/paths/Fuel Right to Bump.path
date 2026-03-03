@@ -67,7 +67,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.07393382489983
   },
   "useDefaultConstraints": true
 }

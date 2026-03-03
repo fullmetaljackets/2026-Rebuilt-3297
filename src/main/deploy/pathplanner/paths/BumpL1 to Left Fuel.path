@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.872928571428571,
-        "y": 5.816607142857142
+        "x": 6.058011111111111,
+        "y": 5.642833333333333
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.233093220338983,
-        "y": 6.456228813559322
+        "x": 6.418175760021523,
+        "y": 6.282455004035513
       },
       "isLocked": false,
       "linkedName": "BumpL1"
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 89.3219073667122
   },
   "reversed": false,
   "folder": "Fuel",
