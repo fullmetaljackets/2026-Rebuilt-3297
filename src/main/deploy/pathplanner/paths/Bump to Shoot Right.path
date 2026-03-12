@@ -3,64 +3,69 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.75,
-        "y": 1.204
+        "x": 3.5,
+        "y": 2.2
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.75,
-        "y": 2.354972505001924
+        "x": 2.0578222222222218,
+        "y": 2.27255517890772
       },
       "isLocked": false,
-      "linkedName": "Fuel Right"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.7,
-        "y": 7.0
+        "x": 3.25,
+        "y": 4.06
       },
       "prevControl": {
-        "x": 8.7,
-        "y": 6.206375
+        "x": 2.797455555555555,
+        "y": 3.8620448210922778
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.595555555555558,
+      "rotationDegrees": 180.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "IntakeRun",
-      "waypointRelativePos": 0.0,
+      "name": "ShooterWarmup",
+      "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "IntakeRun"
+          "name": "ShooterWarmup"
         }
       }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 0.6,
-    "maxAcceleration": 0.6,
-    "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
+    "maxAngularVelocity": 1000.0,
+    "maxAngularAcceleration": 1400.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -83.62828762242582
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "Fuel",
+  "folder": "Shoot",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": -160.0
   },
   "useDefaultConstraints": false
 }

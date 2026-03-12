@@ -5,45 +5,33 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "ShooterWarmup"
+            "pathName": "Bump to Fuel Right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Fuel Fast"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Left to Bump"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Shoot Left"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "Shoot"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Start Shoot Left"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "BumpL1 to Left Fuel"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Left Fuel"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Fuel Right to Bump"
           }
         }
       ]

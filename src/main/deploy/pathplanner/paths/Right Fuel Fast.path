@@ -3,40 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7116666666667466,
-        "y": 5.905367231636387
+        "x": 8.75,
+        "y": 1.204
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7809197146218174,
-        "y": 6.33279973937437
+        "x": 8.75,
+        "y": 2.354972505001924
       },
       "isLocked": false,
-      "linkedName": "Depot"
+      "linkedName": "Fuel Right"
     },
     {
       "anchor": {
-        "x": 3.25,
-        "y": 4.05
+        "x": 8.75,
+        "y": 6.3
       },
       "prevControl": {
-        "x": 3.2890838086516805,
-        "y": 3.684884916474151
+        "x": 8.75,
+        "y": 5.506375
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Shoot"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.14566929133858317,
-      "rotationDegrees": 180.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -47,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -86.5
   },
   "reversed": false,
-  "folder": "Shoot",
+  "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -86.5
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

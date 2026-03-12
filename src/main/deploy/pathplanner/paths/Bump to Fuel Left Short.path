@@ -8,40 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.768764675334081,
-        "y": 5.578093144451641
+        "x": 4.4989,
+        "y": 5.5064111111111105
       },
       "isLocked": false,
       "linkedName": "BumpL"
     },
     {
       "anchor": {
-        "x": 6.058011111111111,
-        "y": 5.642833333333333
+        "x": 6.1,
+        "y": 5.516155555555556
       },
       "prevControl": {
-        "x": 5.287916803399014,
-        "y": 5.557118797265639
-      },
-      "nextControl": {
-        "x": 6.626540865096627,
-        "y": 5.706112938981018
-      },
-      "isLocked": false,
-      "linkedName": "BumpL1"
-    },
-    {
-      "anchor": {
-        "x": 8.7,
-        "y": 6.917415254237288
-      },
-      "prevControl": {
-        "x": 7.7758386064030125,
-        "y": 7.49373220338983
+        "x": 5.495844444444445,
+        "y": 5.477177777777777
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Left"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -50,7 +34,7 @@
       "rotationDegrees": 45.0
     },
     {
-      "waypointRelativePos": 1.047244094488189,
+      "waypointRelativePos": 0.9777777777777776,
       "rotationDegrees": 45.0
     }
   ],
@@ -60,8 +44,8 @@
       "minWaypointRelativePos": 0.0,
       "maxWaypointRelativePos": 0.7531453362255979,
       "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,
@@ -81,7 +65,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 85.86185106675744
+    "rotation": 90.0
   },
   "reversed": false,
   "folder": "Bump",

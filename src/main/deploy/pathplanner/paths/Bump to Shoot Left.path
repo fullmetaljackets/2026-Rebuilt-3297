@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.3762994350282494,
-        "y": 5.816607142857142
+        "x": 3.1,
+        "y": 5.39
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.350677966101695,
-        "y": 3.7147316384180797
+        "x": 2.0822777777777777,
+        "y": 5.4215222222222215
       },
       "isLocked": false,
-      "linkedName": "bump1"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.325056497175142,
-        "y": 4.047810734463277
+        "x": 3.25,
+        "y": 4.05
       },
       "prevControl": {
-        "x": 3.358097427197896,
-        "y": 4.295617709633936
+        "x": 2.605122222222222,
+        "y": 4.280800376647834
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,16 +30,28 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 0.6133333333333313,
+      "rotationDegrees": 180.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "ShooterWarmup",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "ShooterWarmup"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -47,13 +59,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Shoot",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 45.0
+    "rotation": -160.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

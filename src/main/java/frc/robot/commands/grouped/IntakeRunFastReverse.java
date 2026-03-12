@@ -7,12 +7,12 @@ import frc.robot.commands.IntakeRunPercentage;
 import frc.robot.commands.BackIntakeRunPercentage;
 
 
-public class IntakeRun extends ParallelCommandGroup{
-    public IntakeRun(IntakeMotor s_IntakeMotor, BackIntakeMotor s_BackIntakeMotor){
+public class IntakeRunFastReverse extends ParallelCommandGroup{
+    public IntakeRunFastReverse(IntakeMotor s_IntakeMotor, BackIntakeMotor s_BackIntakeMotor){
 
         addCommands(
-            new IntakeRunPercentage(0.6, s_IntakeMotor),
-            new BackIntakeRunPercentage(-0.6, s_BackIntakeMotor)
+            new IntakeRunPercentage(-1, s_IntakeMotor),
+            new BackIntakeRunPercentage(1, s_BackIntakeMotor)
         );
     }
 
