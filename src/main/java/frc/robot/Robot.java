@@ -27,6 +27,8 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         m_timeAndJoystickReplay.update();
+        // Update odometry with Limelight vision measurements
+        m_robotContainer.updateOdometryWithLimelight();
         CommandScheduler.getInstance().run(); 
     }
 

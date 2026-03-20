@@ -16,7 +16,7 @@ public class Shoot extends ParallelCommandGroup{
         addCommands(
             new ShooterRun(43, 1000, s_ShooterMotor),
             new WinchRun(-0.2, s_WinchMotor),
-            new FeederRun(20, 1000, s_FeederMotor)
+            new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)
             // new IntakeRunSlow(s_IntakeMotor, s_BackIntakeMotor)
         );
     }

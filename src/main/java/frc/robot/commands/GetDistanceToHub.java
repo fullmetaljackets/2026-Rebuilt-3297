@@ -1,40 +1,30 @@
 package frc.robot.commands;
 
-import com.ctre.phoenix6.swerve.SwerveRequest;
-import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
-
-import edu.wpi.first.math.util.Units;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Limelight;
 import frc.robot.LimelightHelpers;
+import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.ShooterMotor;
 
 public class GetDistanceToHub extends Command {
-    private final CommandSwerveDrivetrain m_drivetrain;
-    private final SwerveRequest.RobotCentric m_alignRequest;
     private final Limelight m_limelight;
-    private final double kP_Distance = 0.05; // Proportional control constant
+    private final ShooterMotor s_ShooterMotor;
+    private final double distToSpeedOffset = 1; // Proportional control constant
+    private double m_ShooterAcc;
     // private final double kp_Strafe = 2;
     // private final double kp_Angle = 1.7;
     
-    private final SwerveRequest.RobotCentric drive = new SwerveRequest.RobotCentric();
-
-    public GetDistanceToHub(CommandSwerveDrivetrain drivetrain, Limelight limelight) {
-        m_drivetrain = drivetrain;
+    public GetDistanceToHub(Limelight limelight, ShooterMotor shooterMotor, double ShooterAcc) {
         m_limelight = limelight;
-        m_alignRequest = new SwerveRequest.RobotCentric()
-            .withDriveRequestType(DriveRequestType.Velocity);
-        addRequirements( limelight);
+        s_ShooterMotor =shooterMotor;
+        m_ShooterAcc = ShooterAcc;
+        addRequirements(limelight, s_ShooterMotor);
     }
 
     @Override
     public void initialize() {
         // Initialization code if needed
-        LimelightHelpers.setPipelineIndex("limelight-one", 0);
+        LimelightHelpers.setPipelineIndex("limelight", 0);
 
     }
 
@@ -47,7 +37,7 @@ public class GetDistanceToHub extends Command {
 
         
         // Proportional control for distance and angle
-        double ShooterSpeed = kP_Distance * distance;
+        double ShooterSpeed = distToSpeedOffset * distance;
         // double turnSpeed = kp_Angle * angleError;
 
         SmartDashboard.putNumber("distance", distance);
@@ -59,11 +49,7 @@ public class GetDistanceToHub extends Command {
         // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
 
 
-        m_drivetrain.setControl(
-        m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
-            .withVelocityY(0) // Drive left with negative X (left)
-            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
-        );
+        s_ShooterMotor.setShooterSpeed(ShooterSpeed, m_ShooterAcc);
     }
 
     @Override
@@ -83,11 +69,6 @@ public class GetDistanceToHub extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        // Stop the drivetrain when the command ends
-        m_drivetrain.setControl(
-        drive.withVelocityX(0) // Drive forward with negative Y (forward)
-            .withVelocityY(0) // Drive left with negative X (left)
-            .withRotationalRate(0)); // Drive counterclockwise with negative X (left)
-        // );
+        s_ShooterMotor.setShooterSpeed(0, m_ShooterAcc);
     }
 }

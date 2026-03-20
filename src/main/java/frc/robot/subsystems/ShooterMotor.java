@@ -87,6 +87,9 @@ public class ShooterMotor extends SubsystemBase{
         ShooterMotor.set(setpoint);
         // IntakeMotor2.set(setpoint);
     }
+    public double getMotorSpeed(){
+        return ShooterMotor.getVelocity().getValueAsDouble();
+    }
 
     private final SysIdRoutine m_sysIdRoutine = new SysIdRoutine(
         new SysIdRoutine.Config(

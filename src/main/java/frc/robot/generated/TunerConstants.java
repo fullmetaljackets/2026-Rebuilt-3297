@@ -20,9 +20,9 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 // https://v6.docs.ctr-electronics.com/en/stable/docs/tuner/tuner-swerve/index.html
 public class TunerConstants {
     //Limelight variables
-    public static final double LLMountAngle = 0; // The angle at which the intake limelight is mounted, in degrees
-    public static final double LLHight = 0; // The height of the\
-    public static final double ApriltagHeight = 0; // The height of the apriltags, in inches
+    public static final double LLMountAngle = 25; // The angle at which the intake limelight is mounted, in degrees
+    public static final double LLHight = 29.5; // The height of the\
+    public static final double ApriltagHeight = 44.5; // The height of the apriltags, in inches
     // Both sets of gains need to be tuned to your individual robot.
 
     // The steer motor uses any SwerveModule.SteerRequestType control request with the

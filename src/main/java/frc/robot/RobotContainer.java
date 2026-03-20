@@ -16,7 +16,6 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
-import frc.robot.commands.IntakeRunPercentage;
+import frc.robot.commands.GetDistanceToHub;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
@@ -38,6 +37,7 @@ import frc.robot.subsystems.BackIntakeMotor;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.FeederMotor;
 import frc.robot.subsystems.IntakeMotor;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.ShooterMotor;
 import frc.robot.subsystems.WinchMotor;
 
@@ -63,6 +63,7 @@ public class RobotContainer {
     private final IntakeMotor s_IntakeMotor = new IntakeMotor();
     private final BackIntakeMotor s_BackIntakeMotor = new BackIntakeMotor();
     private final WinchMotor s_WinchMotor = new WinchMotor();
+    private final Limelight limelight = new Limelight();
     private final SendableChooser<Command> autoChooser;
 
 
@@ -117,7 +118,7 @@ public class RobotContainer {
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
         CopilotStick.rightBumper().whileTrue(new ShooterRun(44.5, 1000, s_ShooterMotor));
-        DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor));
+        DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor));
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
@@ -127,12 +128,16 @@ public class RobotContainer {
         CopilotStick.povDown().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
         CopilotStick.povUp().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
 
+        //limelight
+        DriveStick.a().whileTrue(new GetDistanceToHub(limelight, s_ShooterMotor, 1000));
+
         //manuel controlls shooter
         DriveStick.leftTrigger().and(DriveStick.povUp()).whileTrue(new ShooterRun(90, 1000, s_ShooterMotor));
         DriveStick.leftTrigger().and(DriveStick.povDown()).whileTrue(new ShooterRun(-90, 1000, s_ShooterMotor));
         //manuel controlls feeder
         DriveStick.leftTrigger().and(DriveStick.povRight()).whileTrue(new FeederRunPercentage(1, s_FeederMotor));
         DriveStick.leftTrigger().and(DriveStick.povLeft()).whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
+        CopilotStick.leftBumper().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
         //manuel controlls Intake
         DriveStick.rightTrigger().and(DriveStick.povUp()).whileTrue(new IntakeRunFast(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.rightTrigger().and(DriveStick.povDown()).whileTrue(new IntakeRunFastReverse(s_IntakeMotor, s_BackIntakeMotor));
@@ -167,5 +172,35 @@ public class RobotContainer {
         //     // Finally idle for the rest of auton
         //     drivetrain.applyRequest(() -> idle)
         // );
+    }
+
+    /**
+     * Updates the drivetrain odometry with vision measurements from Limelight
+     * Call this method periodically to integrate vision data into the pose estimate
+     */
+    public void updateOdometryWithLimelight() {
+        // Check if Limelight has a valid pose estimate
+        var limelightPose = limelight.getPoseEstimate();
+        
+        if (limelightPose != null && limelight.hasValidPoseEstimate()) {
+            // Get the pose and timestamp
+            edu.wpi.first.math.geometry.Pose2d limelightFullPose = limelightPose.pose;
+            double timestamp = limelightPose.timestampSeconds;
+            var stdDevs = limelight.getVisionStandardDeviations();
+            
+            // IMPORTANT: Only use X and Y from Limelight, keep the gyro's rotation
+            // Limelight's rotation is based on AprilTag orientation, not robot orientation
+            edu.wpi.first.math.geometry.Pose2d robotPose = new edu.wpi.first.math.geometry.Pose2d(
+                limelightFullPose.getX(),
+                limelightFullPose.getY(),
+                drivetrain.getState().Pose.getRotation()  // Use current gyro heading, not Limelight's rotation
+            );
+            
+            // Update the drivetrain odometry with the vision measurement
+            drivetrain.updateOdometryWithVision(robotPose, timestamp, stdDevs);
+            
+            // Debug logging
+            SmartDashboard.putString("Vision/Status", "Updating odometry");
+        }
     }
 }

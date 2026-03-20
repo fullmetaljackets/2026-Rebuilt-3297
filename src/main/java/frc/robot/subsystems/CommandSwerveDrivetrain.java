@@ -284,6 +284,20 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
     }
 
+    /**
+     * Updates the odometry with a vision pose measurement from Limelight
+     * @param visionPose The pose measured by the vision system
+     * @param visionTimestamp The timestamp of the vision measurement in seconds
+     * @param visionMeasurementStdDevs The standard deviations of the vision measurement
+     */
+    public void updateOdometryWithVision(
+        Pose2d visionPose,
+        double visionTimestamp,
+        Matrix<N3, N1> visionMeasurementStdDevs
+    ) {
+        addVisionMeasurement(visionPose, visionTimestamp, visionMeasurementStdDevs);
+    }
+
     private void startSimThread() {
         m_lastSimTime = Utils.getCurrentTimeSeconds();
 
