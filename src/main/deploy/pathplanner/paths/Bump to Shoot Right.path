@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 3.3,
-        "y": 2.5
+        "y": 2.45
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.8786704545454538,
-        "y": 3.1058522727272724
+        "y": 3.0558522727272726
       },
       "isLocked": false,
       "linkedName": "Fuel To Right Bump"
@@ -65,7 +65,7 @@
   "folder": "Shoot",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 160.0
+    "rotation": -160.0
   },
   "useDefaultConstraints": true
 }

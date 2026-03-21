@@ -3,51 +3,51 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.75,
-        "y": 1.9
+        "x": 8.3,
+        "y": 4.9
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.337352272727272,
-        "y": 2.5920454545454543
+        "x": 7.266322222222223,
+        "y": 5.379733333333333
       },
       "isLocked": false,
-      "linkedName": "Fuel Left Sweep End"
+      "linkedName": "Fuel Left Long Sweep Mid"
     },
     {
       "anchor": {
-        "x": 5.445931818181817,
-        "y": 2.45
+        "x": 5.930352272727272,
+        "y": 5.65
       },
       "prevControl": {
-        "x": 5.734522727272727,
-        "y": 2.4468295454545457
+        "x": 6.5003548076430695,
+        "y": 5.667754907287216
       },
       "nextControl": {
-        "x": 5.157340909090909,
-        "y": 2.4531704545454547
+        "x": 5.445144949494949,
+        "y": 5.634886363636364
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.3,
-        "y": 2.45
+        "x": 3.199045454545454,
+        "y": 5.65
       },
       "prevControl": {
-        "x": 3.55,
-        "y": 2.45
+        "x": 3.8340454545454534,
+        "y": 5.676113636363637
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel To Right Bump"
+      "linkedName": "Fuel To Left Bump"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.690370370370367,
-      "rotationDegrees": -160.0
+      "waypointRelativePos": 1.1496296296296278,
+      "rotationDegrees": 160.0
     }
   ],
   "constraintZones": [],
@@ -63,7 +63,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -160.0
+    "rotation": 160.0
   },
   "reversed": false,
   "folder": "Bump",

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.75,
-        "y": 1.9
+        "x": 8.25,
+        "y": 3.2
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.337352272727272,
-        "y": 2.5920454545454543
+        "x": 7.325511363636363,
+        "y": 2.5920454545454548
       },
       "isLocked": false,
-      "linkedName": "Fuel Left Sweep End"
+      "linkedName": "Fuel Right Long Sweep Mid"
     },
     {
       "anchor": {
-        "x": 5.445931818181817,
+        "x": 5.7,
         "y": 2.45
       },
       "prevControl": {
-        "x": 5.734522727272727,
-        "y": 2.4468295454545457
+        "x": 6.53525736553913,
+        "y": 2.497728992316525
       },
       "nextControl": {
-        "x": 5.157340909090909,
-        "y": 2.4531704545454547
+        "x": 5.358944444444445,
+        "y": 2.43051111111111
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 2.45
       },
       "prevControl": {
-        "x": 3.55,
-        "y": 2.45
+        "x": 4.021088888888889,
+        "y": 2.434855178907721
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.690370370370367,
+      "waypointRelativePos": 0.98091286307054,
       "rotationDegrees": -160.0
     }
   ],
@@ -69,7 +69,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 86.3930058362679
+    "rotation": -86.5
   },
   "useDefaultConstraints": true
 }

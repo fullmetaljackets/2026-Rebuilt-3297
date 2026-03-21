@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Fuel Left Long"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left To Mid Fuel Fast Long"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Left Mid Long to Bump"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Shoot Left"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
