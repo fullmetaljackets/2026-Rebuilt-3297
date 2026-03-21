@@ -117,10 +117,15 @@ public class RobotContainer {
 
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(44.5, 1000, s_ShooterMotor));
-        DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor));
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(95, 1000, s_ShooterMotor));
+        // CopilotStick.rightBumper().whileTrue(new ShooterRun(44.5, 1000, s_ShooterMotor));
+
+        // DriveStick.rightBumper().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
+        DriveStick.rightBumper().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
+
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
+
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
         //Winch
         CopilotStick.povDown().whileTrue(new WinchRun(0.2, s_WinchMotor));
@@ -129,7 +134,7 @@ public class RobotContainer {
         CopilotStick.povUp().onFalse(new WinchToSetpoint(0.1, s_WinchMotor));
 
         //limelight
-        DriveStick.a().whileTrue(new GetDistanceToHub(limelight, s_ShooterMotor, 1000));
+        // DriveStick.a().whileTrue(new GetDistanceToHub(limelight, s_ShooterMotor, 1000));
 
         //manuel controlls shooter
         DriveStick.leftTrigger().and(DriveStick.povUp()).whileTrue(new ShooterRun(90, 1000, s_ShooterMotor));

@@ -19,19 +19,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Left to Bump Short"
+            "pathName": "Test"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Left"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shoot"
+            "pathName": "Test 2"
           }
         }
       ]
