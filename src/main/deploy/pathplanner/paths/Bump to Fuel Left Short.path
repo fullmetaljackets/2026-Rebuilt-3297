@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 3.6121555555555567,
-        "y": 5.516155555555556
+        "y": 5.55
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.4989,
-        "y": 5.5064111111111105
+        "x": 4.9619383071152825,
+        "y": 5.55
       },
       "isLocked": false,
-      "linkedName": "BumpL"
+      "linkedName": "Start Left"
     },
     {
       "anchor": {
-        "x": 6.1,
-        "y": 5.516155555555556
+        "x": 5.775,
+        "y": 6.333420454545454
       },
       "prevControl": {
-        "x": 5.495844444444445,
-        "y": 5.477177777777777
+        "x": 5.948113636363637,
+        "y": 5.292431818181818
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Left Short Sweep Start"
     }
   ],
   "rotationTargets": [
@@ -34,18 +34,18 @@
       "rotationDegrees": 45.0
     },
     {
-      "waypointRelativePos": 0.9777777777777776,
+      "waypointRelativePos": 0.5660919540229918,
       "rotationDegrees": 45.0
     }
   ],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.0,
-      "maxWaypointRelativePos": 0.7531453362255979,
+      "minWaypointRelativePos": 0.44246353322528287,
+      "maxWaypointRelativePos": 1.0,
       "constraints": {
-        "maxVelocity": 1.0,
-        "maxAcceleration": 1.0,
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,
@@ -73,5 +73,5 @@
     "velocity": 0,
     "rotation": 0.7073193685442478
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

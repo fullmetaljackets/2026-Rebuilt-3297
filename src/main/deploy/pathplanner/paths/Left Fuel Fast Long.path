@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.75,
-        "y": 1.204
+        "x": 8.25,
+        "y": 7.15
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.75,
-        "y": 2.354972505001924
+        "x": 8.237189265536724,
+        "y": 6.214816384180792
       },
       "isLocked": false,
-      "linkedName": "Fuel Right"
+      "linkedName": "Fuel Left Long Sweep Start"
     },
     {
       "anchor": {
-        "x": 8.7,
-        "y": 7.0
+        "x": 8.25,
+        "y": 1.9
       },
       "prevControl": {
-        "x": 8.7,
-        "y": 6.206375
+        "x": 8.211558603956039,
+        "y": 2.848221102417675
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Left Long Sweep End"
     }
   ],
   "rotationTargets": [],
@@ -34,7 +34,7 @@
   "eventMarkers": [
     {
       "name": "IntakeRun",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
@@ -45,8 +45,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 0.6,
-    "maxAcceleration": 0.6,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -54,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -83.62828762242582
+    "rotation": 86.3930058362679
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": 85.0
   },
   "useDefaultConstraints": false
 }

@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.75,
+        "x": 7.7,
         "y": 6.3
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.928144444444445,
-        "y": 5.983888888888889
+        "x": 6.6827499999999995,
+        "y": 5.508875000000001
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Right Sweep End"
     },
     {
       "anchor": {
-        "x": 6.291877777777778,
-        "y": 5.39
+        "x": 5.930352272727272,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 6.862156767872285,
-        "y": 5.39
+        "x": 6.5003548076430695,
+        "y": 5.517754907287216
       },
       "nextControl": {
-        "x": 6.041877777777778,
-        "y": 5.39
+        "x": 5.445144949494949,
+        "y": 5.484886363636364
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.1,
-        "y": 5.39
+        "x": 3.199045454545454,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 3.695542017259058,
-        "y": 5.39
+        "x": 3.8340454545454534,
+        "y": 5.526113636363637
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "bump1"
+      "linkedName": "Fuel To Left Bump"
     }
   ],
   "rotationTargets": [
@@ -50,26 +50,12 @@
       "rotationDegrees": -160.0
     }
   ],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.9405639913232064,
-      "maxWaypointRelativePos": 1.8394793926247346,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -85,5 +71,5 @@
     "velocity": 0,
     "rotation": -86.5
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

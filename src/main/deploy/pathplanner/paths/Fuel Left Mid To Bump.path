@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.75,
-        "y": 3.2
+        "x": 7.7,
+        "y": 4.9
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.665844444444444,
-        "y": 2.8723777777777775
+        "x": 6.507534090909091,
+        "y": 5.467647727272727
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Left Sweep Mid End"
     },
     {
       "anchor": {
-        "x": 5.83388888888889,
-        "y": 2.2
+        "x": 5.600534090909091,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 6.66914625442802,
-        "y": 2.247728992316525
+        "x": 6.023113636363636,
+        "y": 5.519181818181819
       },
       "nextControl": {
-        "x": 5.492833333333334,
-        "y": 2.18051111111111
+        "x": 5.259273558403113,
+        "y": 5.484509431283241
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.5,
-        "y": 2.2
+        "x": 3.199045454545454,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 4.221088888888889,
-        "y": 2.184855178907721
+        "x": 3.9201343434343436,
+        "y": 5.48485517890772
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel To Left Bump"
     }
   ],
   "rotationTargets": [
@@ -50,21 +50,7 @@
       "rotationDegrees": -160.0
     }
   ],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 1.0461538461538458,
-      "maxWaypointRelativePos": 2.0,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -80,10 +66,10 @@
     "rotation": -160.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": 85.0
   },
   "useDefaultConstraints": true
 }

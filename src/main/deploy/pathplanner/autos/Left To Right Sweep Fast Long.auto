@@ -7,31 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Right Short"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
+            "pathName": "Bump to Fuel Left Long"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Right Fuel Short"
+            "pathName": "Left Fuel Fast Long"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Left to Bump Short"
+            "pathName": "Fuel Right to Bump Long"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Left"
+            "pathName": "Bump to Shoot Right"
           }
         },
         {

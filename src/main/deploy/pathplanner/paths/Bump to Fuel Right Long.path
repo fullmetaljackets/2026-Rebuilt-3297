@@ -8,40 +8,40 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.6,
-        "y": 2.5
+        "x": 4.312181818181818,
+        "y": 2.499284090909091
       },
       "isLocked": false,
       "linkedName": "Start Right"
     },
     {
       "anchor": {
-        "x": 5.518079545454546,
-        "y": 2.39621590909091
+        "x": 5.600534090909091,
+        "y": 2.5
       },
       "prevControl": {
-        "x": 5.300185661173408,
-        "y": 2.51878121899905
+        "x": 4.992431818181819,
+        "y": 2.4889772727272725
       },
       "nextControl": {
-        "x": 5.735973429735683,
-        "y": 2.2736505991827696
+        "x": 5.930431298164955,
+        "y": 2.505979860800893
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.775,
-        "y": 1.7571931818181814
+        "x": 8.25,
+        "y": 1.18
       },
       "prevControl": {
-        "x": 5.775,
-        "y": 2.0071931818181814
+        "x": 7.250238636363635,
+        "y": 0.685272727272727
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Right Short Sweep Start"
+      "linkedName": "Fuel Right Long Sweep Start"
     }
   ],
   "rotationTargets": [
@@ -50,7 +50,7 @@
       "rotationDegrees": -45.0
     },
     {
-      "waypointRelativePos": 0.9339019189765394,
+      "waypointRelativePos": 1.0106951871657779,
       "rotationDegrees": -45.0
     }
   ],
@@ -67,7 +67,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -86.5
   },
   "reversed": false,
   "folder": "Bump",

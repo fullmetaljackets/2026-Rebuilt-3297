@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.75,
-        "y": 1.204
+        "x": 7.7,
+        "y": 1.1800113636363643
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.75,
-        "y": 2.354972505001924
+        "x": 7.7,
+        "y": 2.330983868638288
       },
       "isLocked": false,
-      "linkedName": "Fuel Right"
+      "linkedName": "Fuel Right Sweep Start"
     },
     {
       "anchor": {
-        "x": 8.75,
+        "x": 7.7,
         "y": 3.2
       },
       "prevControl": {
-        "x": 8.75,
+        "x": 7.7,
         "y": 2.4063750000000006
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Right Sweep Mid End"
     }
   ],
   "rotationTargets": [],
@@ -62,5 +62,5 @@
     "velocity": 0,
     "rotation": -86.5
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

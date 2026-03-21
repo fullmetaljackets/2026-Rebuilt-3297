@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.1,
-        "y": 5.516155555555556
+        "x": 5.775,
+        "y": 6.333420454545454
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.087189265536723,
-        "y": 4.580971939736347
+        "x": 5.7621892655367235,
+        "y": 5.398236838726246
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Left Short Sweep Start"
     },
     {
       "anchor": {
-        "x": 6.1,
-        "y": 2.5105225988700566
+        "x": 5.775,
+        "y": 2.5
       },
       "prevControl": {
-        "x": 6.09698888888889,
-        "y": 3.460077777777777
+        "x": 5.771988888888891,
+        "y": 3.4495551789077203
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel Left Short Sweep End"
     }
   ],
   "rotationTargets": [],
@@ -36,12 +36,17 @@
       "name": "IntakeRun",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -57,5 +62,5 @@
     "velocity": 0,
     "rotation": 90.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

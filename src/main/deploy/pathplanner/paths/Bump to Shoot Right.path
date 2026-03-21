@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5,
-        "y": 2.2
+        "x": 3.3,
+        "y": 2.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0578222222222218,
-        "y": 2.27255517890772
+        "x": 1.8786704545454538,
+        "y": 3.1058522727272724
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel To Right Bump"
     },
     {
       "anchor": {
-        "x": 3.25,
-        "y": 4.06
+        "x": 3.2,
+        "y": 4.05
       },
       "prevControl": {
-        "x": 2.797455555555555,
-        "y": 3.8620448210922778
+        "x": 2.066829545454546,
+        "y": 4.055613636363637
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Shoot"
     }
   ],
   "rotationTargets": [
@@ -50,10 +50,10 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
-    "maxAngularVelocity": 1000.0,
-    "maxAngularAcceleration": 1400.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
@@ -65,7 +65,7 @@
   "folder": "Shoot",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -160.0
+    "rotation": 160.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.1,
-        "y": 5.39
+        "x": 3.199045454545454,
+        "y": 5.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0822777777777777,
-        "y": 5.4215222222222215
+        "x": 2.230204545454545,
+        "y": 5.199670454545456
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Fuel To Left Bump"
     },
     {
       "anchor": {
-        "x": 3.25,
+        "x": 3.2,
         "y": 4.05
       },
       "prevControl": {
-        "x": 2.605122222222222,
-        "y": 4.280800376647834
+        "x": 2.138977272727273,
+        "y": 3.756715909090909
       },
       "nextControl": null,
       "isLocked": false,
@@ -50,8 +50,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -67,5 +67,5 @@
     "velocity": 0,
     "rotation": -160.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

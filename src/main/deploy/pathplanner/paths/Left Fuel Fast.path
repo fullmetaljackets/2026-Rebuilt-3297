@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.7,
-        "y": 6.917415254237288
+        "x": 7.7,
+        "y": 7.15
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.687189265536723,
-        "y": 5.98223163841808
+        "x": 7.687189265536724,
+        "y": 6.214816384180792
       },
       "isLocked": false,
-      "linkedName": "Fuel Left"
+      "linkedName": "Fuel Left Sweep Start"
     },
     {
       "anchor": {
-        "x": 8.7,
-        "y": 1.7
+        "x": 7.7,
+        "y": 1.9
       },
       "prevControl": {
-        "x": 8.661558603956038,
-        "y": 2.648221102417675
+        "x": 7.661558603956039,
+        "y": 2.848221102417675
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Right2"
+      "linkedName": "Fuel Left Sweep End"
     }
   ],
   "rotationTargets": [],
@@ -45,8 +45,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -60,7 +60,7 @@
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 85.86185106675744
+    "rotation": 85.0
   },
   "useDefaultConstraints": false
 }

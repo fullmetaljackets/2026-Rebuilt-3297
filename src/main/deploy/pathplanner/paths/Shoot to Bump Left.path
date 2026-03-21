@@ -12,7 +12,7 @@
         "y": 4.958822736410641
       },
       "isLocked": false,
-      "linkedName": "Shoot"
+      "linkedName": null
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "bump1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],

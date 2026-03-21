@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.6024111111111115,
-        "y": 2.5105225988700566
+        "x": 3.6,
+        "y": 2.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.6024111111111115,
-        "y": 2.5105225988700566
+        "x": 4.312181818181818,
+        "y": 2.499284090909091
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Start Right"
     },
     {
       "anchor": {
-        "x": 5.889124999999999,
-        "y": 2.5105225988700566
+        "x": 5.600534090909091,
+        "y": 2.5
       },
       "prevControl": {
-        "x": 4.889124999999999,
-        "y": 2.5105225988700566
+        "x": 4.992431818181819,
+        "y": 2.4889772727272725
       },
       "nextControl": {
-        "x": 6.889124999999999,
-        "y": 2.5105225988700566
+        "x": 5.930431298164955,
+        "y": 2.505979860800893
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.75,
-        "y": 1.204
+        "x": 7.7,
+        "y": 1.1800113636363643
       },
       "prevControl": {
-        "x": 7.368911319612591,
-        "y": 0.9166735270379348
+        "x": 6.700238636363635,
+        "y": 0.6852840909090914
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Right"
+      "linkedName": "Fuel Right Sweep Start"
     }
   ],
   "rotationTargets": [
@@ -54,21 +54,7 @@
       "rotationDegrees": -45.0
     }
   ],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0,
-      "maxWaypointRelativePos": 0.9230769230769215,
-      "constraints": {
-        "maxVelocity": 2.5,
-        "maxAcceleration": 2.5,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
