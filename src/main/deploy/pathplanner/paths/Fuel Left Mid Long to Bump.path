@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.266322222222223,
-        "y": 5.379733333333333
+        "x": 7.661897727272727,
+        "y": 5.539795454545454
       },
       "isLocked": false,
       "linkedName": "Fuel Left Long Sweep Mid"
     },
     {
       "anchor": {
-        "x": 5.930352272727272,
+        "x": 5.466545454545455,
         "y": 5.65
       },
       "prevControl": {
-        "x": 6.5003548076430695,
-        "y": 5.667754907287216
+        "x": 5.890059158670496,
+        "y": 5.624592323119658
       },
       "nextControl": {
-        "x": 5.445144949494949,
-        "y": 5.634886363636364
+        "x": 5.034623217188491,
+        "y": 5.675912126425454
       },
       "isLocked": false,
       "linkedName": null
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.1496296296296278,
+      "waypointRelativePos": 0.8448275862068967,
       "rotationDegrees": 160.0
     }
   ],

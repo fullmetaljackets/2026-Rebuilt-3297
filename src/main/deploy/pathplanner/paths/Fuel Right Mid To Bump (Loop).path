@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.75,
-        "y": 3.2
+        "x": 6.4,
+        "y": 2.6332727272727277
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.167170454545454,
-        "y": 2.4477499999999996
+        "x": 6.084954545454545,
+        "y": 2.5302045454545454
       },
       "isLocked": false,
-      "linkedName": "Fuel Right Sweep Mid End"
+      "linkedName": "Fuel Right Sweep Mid End New"
     },
     {
       "anchor": {
@@ -69,7 +69,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": 132.93748412290043
   },
   "useDefaultConstraints": true
 }

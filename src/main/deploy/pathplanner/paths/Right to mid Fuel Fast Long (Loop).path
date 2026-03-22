@@ -9,26 +9,59 @@
       "prevControl": null,
       "nextControl": {
         "x": 8.25,
-        "y": 1.860592477157839
+        "y": 3.994962680950607
       },
       "isLocked": false,
       "linkedName": "Fuel Right Long Sweep Start"
     },
     {
       "anchor": {
-        "x": 8.25,
-        "y": 3.2
+        "x": 7.424840909090908,
+        "y": 3.6
       },
       "prevControl": {
-        "x": 8.25,
-        "y": 2.5912281804909942
+        "x": 8.373572185719386,
+        "y": 3.6
+      },
+      "nextControl": {
+        "x": 6.650730932196491,
+        "y": 3.6
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.517840909090909,
+        "y": 2.5508181818181823
+      },
+      "prevControl": {
+        "x": 5.672681818181818,
+        "y": 3.5815
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Right Long Sweep Mid"
+      "linkedName": "Fuel Right Long Sweep Mid New"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3505747126436783,
+      "rotationDegrees": -85.0
+    },
+    {
+      "waypointRelativePos": 0.8965517241379313,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 1.1925287356321876,
+      "rotationDegrees": 25.466025715908316
+    },
+    {
+      "waypointRelativePos": 1.896551724137929,
+      "rotationDegrees": 130.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
@@ -54,7 +87,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": 131.42366562500268
   },
   "reversed": false,
   "folder": "Fuel",

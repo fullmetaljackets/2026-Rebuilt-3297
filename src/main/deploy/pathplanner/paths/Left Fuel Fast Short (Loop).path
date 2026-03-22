@@ -4,55 +4,71 @@
     {
       "anchor": {
         "x": 7.75,
-        "y": 3.2
+        "y": 7.15
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.167170454545454,
-        "y": 2.4477499999999996
+        "x": 7.75,
+        "y": 4.75
       },
       "isLocked": false,
-      "linkedName": "Fuel Right Sweep Mid End"
+      "linkedName": "Fuel Left Sweep Start"
     },
     {
       "anchor": {
-        "x": 5.435625,
-        "y": 2.45
+        "x": 7.404227272727272,
+        "y": 4.55
       },
       "prevControl": {
-        "x": 5.810272727272727,
-        "y": 2.478670454545455
+        "x": 7.826932492398858,
+        "y": 4.55
       },
       "nextControl": {
-        "x": 5.095008990820403,
-        "y": 2.4239338714804775
+        "x": 6.414558025188079,
+        "y": 4.55
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.3,
-        "y": 2.45
+        "x": 6.5,
+        "y": 5.437
       },
       "prevControl": {
-        "x": 4.021088888888889,
-        "y": 2.434855178907721
+        "x": 5.992193181818181,
+        "y": 4.704943181818183
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel To Right Bump"
+      "linkedName": "Fuel Left Sweep Mid End New"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.9166666666666683,
-      "rotationDegrees": -160.0
+      "waypointRelativePos": 0.43965517241379304,
+      "rotationDegrees": 85.0
+    },
+    {
+      "waypointRelativePos": 1.0747126436781607,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -63,13 +79,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -160.0
+    "rotation": -134.9282588143037
   },
   "reversed": false,
-  "folder": "Bump",
+  "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": 85.0
   },
   "useDefaultConstraints": true
 }

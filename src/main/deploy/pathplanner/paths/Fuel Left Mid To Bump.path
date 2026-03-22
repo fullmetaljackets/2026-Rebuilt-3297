@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.5575340909090905,
-        "y": 5.467647727272727
+        "x": 7.352693181818181,
+        "y": 5.601636363636365
       },
       "isLocked": false,
       "linkedName": "Fuel Left Sweep Mid End"
     },
     {
       "anchor": {
-        "x": 5.600534090909091,
+        "x": 5.291329545454545,
         "y": 5.65
       },
       "prevControl": {
-        "x": 6.023113636363636,
-        "y": 5.669181818181819
+        "x": 5.6623885449692715,
+        "y": 5.65
       },
       "nextControl": {
-        "x": 5.259273558403113,
-        "y": 5.6345094312832416
+        "x": 4.940883385572261,
+        "y": 5.65
       },
       "isLocked": false,
       "linkedName": null
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.98091286307054,
+      "waypointRelativePos": 0.8649425287356327,
       "rotationDegrees": 160.0
     }
   ],
