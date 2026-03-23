@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8786704545454538,
-        "y": 3.0558522727272726
+        "x": 2.446647727272727,
+        "y": 2.880636363636364
       },
       "isLocked": false,
       "linkedName": "Fuel To Right Bump"
@@ -20,8 +20,8 @@
         "y": 4.05
       },
       "prevControl": {
-        "x": 2.066829545454546,
-        "y": 4.055613636363637
+        "x": 2.405420454545454,
+        "y": 3.9113181818181815
       },
       "nextControl": null,
       "isLocked": false,
@@ -41,17 +41,12 @@
       "name": "ShooterWarmup",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "ShooterWarmup"
-        }
-      }
+      "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -64,8 +59,8 @@
   "reversed": false,
   "folder": "Shoot",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 1.0,
     "rotation": -160.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -1,0 +1,37 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Fuel Right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Fuel Fast Short (Loop)"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Right Mid To Bump (Loop)"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Shoot Right"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
