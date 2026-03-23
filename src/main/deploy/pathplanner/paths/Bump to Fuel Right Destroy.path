@@ -20,28 +20,28 @@
         "y": 2.5
       },
       "prevControl": {
-        "x": 4.992431818181819,
-        "y": 2.4889772727272725
+        "x": 4.995866666666667,
+        "y": 2.4758888888888886
       },
       "nextControl": {
-        "x": 5.930431298164955,
-        "y": 2.505979860800893
+        "x": 5.961086586828091,
+        "y": 2.514377029325473
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.25,
+        "x": 8.5,
         "y": 1.18
       },
       "prevControl": {
-        "x": 7.250238636363635,
-        "y": 0.685272727272727
+        "x": 8.549233333333335,
+        "y": 0.059266666666666135
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Right Long Sweep Start"
+      "linkedName": "Fuel Right Sweep Destroy Start"
     }
   ],
   "rotationTargets": [
@@ -67,7 +67,7 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": -80.0
+    "rotation": 90.0
   },
   "reversed": false,
   "folder": "Bump",
@@ -75,5 +75,5 @@
     "velocity": 0,
     "rotation": 0.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

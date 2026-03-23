@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.25,
-        "y": 3.994962680950607
+        "x": 8.28948888888889,
+        "y": 3.654966666666666
       },
       "isLocked": false,
       "linkedName": "Fuel Right Long Sweep Start"
@@ -20,12 +20,12 @@
         "y": 3.6
       },
       "prevControl": {
-        "x": 8.373572185719386,
-        "y": 3.6
+        "x": 7.997119757148738,
+        "y": 3.592704479212646
       },
       "nextControl": {
-        "x": 6.650730932196491,
-        "y": 3.6
+        "x": 6.935011111111111,
+        "y": 3.6062444444444433
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 2.5508181818181823
       },
       "prevControl": {
-        "x": 5.672681818181818,
-        "y": 3.5815
+        "x": 6.457533333333334,
+        "y": 3.4893111111111113
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,8 +58,8 @@
       "rotationDegrees": 25.466025715908316
     },
     {
-      "waypointRelativePos": 1.896551724137929,
-      "rotationDegrees": 130.0
+      "waypointRelativePos": 1.7112033195020748,
+      "rotationDegrees": 90.0
     }
   ],
   "constraintZones": [],
@@ -92,7 +92,7 @@
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 1.0,
     "rotation": -80.0
   },
   "useDefaultConstraints": false

@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Right Long"
+            "pathName": "Bump to Fuel Right Destroy"
           }
         },
         {
@@ -19,19 +19,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Left to Bump Long"
+            "pathName": "Left Side Heard"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Left"
+            "pathName": "Left Destroy Intake"
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Shoot"
+            "pathName": "Fuel Right to Bump Short"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Shoot Right"
           }
         }
       ]

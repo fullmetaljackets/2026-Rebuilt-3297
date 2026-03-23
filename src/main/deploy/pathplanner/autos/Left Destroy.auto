@@ -7,31 +7,37 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Right Long"
+            "pathName": "Bump to Fuel Left Destroy"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Right Fuel Destroy"
+            "pathName": "Left Fuel Destroy"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Left to Bump Long"
+            "pathName": "Right Side Heard"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Destroy Intake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Left to Bump Short"
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "Bump to Shoot Left"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shoot"
           }
         }
       ]

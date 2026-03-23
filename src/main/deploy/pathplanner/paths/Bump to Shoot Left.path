@@ -64,7 +64,7 @@
   "reversed": false,
   "folder": "Shoot",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 1.0,
     "rotation": 160.0
   },
   "useDefaultConstraints": true

@@ -20,12 +20,12 @@
         "y": 4.55
       },
       "prevControl": {
-        "x": 8.208872260267846,
-        "y": 4.55
+        "x": 8.208315298924092,
+        "y": 4.577326710727072
       },
       "nextControl": {
-        "x": 6.742185169318762,
-        "y": 4.55
+        "x": 6.857055555555556,
+        "y": 4.522222222222222
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 5.571
       },
       "prevControl": {
-        "x": 5.693295454545454,
-        "y": 4.519420454545455
+        "x": 6.360088888888889,
+        "y": 4.570944444444445
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,8 +58,8 @@
       "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.8189655172413817,
-      "rotationDegrees": -100.0
+      "waypointRelativePos": 1.8041493775933588,
+      "rotationDegrees": -90.0
     }
   ],
   "constraintZones": [],
@@ -92,7 +92,7 @@
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 1.0,
     "rotation": 85.0
   },
   "useDefaultConstraints": false

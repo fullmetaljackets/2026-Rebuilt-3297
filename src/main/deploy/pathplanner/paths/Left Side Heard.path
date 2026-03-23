@@ -3,47 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.775,
-        "y": 6.333420454545454
+        "x": 8.5,
+        "y": 7.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.7621892655367235,
-        "y": 5.398236838726246
+        "x": 8.02638661792659,
+        "y": 7.6
       },
       "isLocked": false,
-      "linkedName": "Fuel Left Short Sweep Start"
+      "linkedName": "Fuel Right Sweep Destroy End"
     },
     {
       "anchor": {
-        "x": 5.775,
-        "y": 2.45
+        "x": 5.9,
+        "y": 7.6
       },
       "prevControl": {
-        "x": 5.771988888888891,
-        "y": 3.399555178907721
+        "x": 6.561533165466665,
+        "y": 7.6
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Left Short Sweep End"
+      "linkedName": "Left Side Heard End"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "IntakeRun",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "IntakeRun"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
