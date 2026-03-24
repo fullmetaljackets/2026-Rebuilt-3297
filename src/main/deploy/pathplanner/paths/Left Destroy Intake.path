@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.9,
+        "x": 5.6,
         "y": 7.6
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.960566666666666,
-        "y": 6.948588888888889
+        "x": 7.775272727272727,
+        "y": 7.322875
       },
       "isLocked": false,
       "linkedName": "Left Side Heard End"
@@ -17,15 +17,15 @@
     {
       "anchor": {
         "x": 5.775,
-        "y": 6.061844444444444
+        "y": 5.921147727272728
       },
       "prevControl": {
-        "x": 5.775,
-        "y": 6.411844444444443
+        "x": 5.7757499999999995,
+        "y": 6.223644191919193
       },
       "nextControl": {
-        "x": 5.775,
-        "y": 5.711844444444444
+        "x": 5.774132223930347,
+        "y": 5.571148803039106
       },
       "isLocked": false,
       "linkedName": null
@@ -33,18 +33,47 @@
     {
       "anchor": {
         "x": 5.775,
-        "y": 2.45
+        "y": 4.241136363636364
       },
       "prevControl": {
         "x": 5.775,
-        "y": 3.0091816989755076
+        "y": 4.93370455707455
+      },
+      "nextControl": {
+        "x": 5.775,
+        "y": 3.5485681701981777
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.311704545454545,
+        "y": 2.45
+      },
+      "prevControl": {
+        "x": 6.033420454545454,
+        "y": 2.924113636363636
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Fuel Left Short Sweep End"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.11320754716981146,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 0.6037735849056604,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 2.1839622641509417,
+      "rotationDegrees": 90.0
+    }
+  ],
   "constraintZones": [
     {
       "name": "Constraints Zone",
@@ -61,8 +90,8 @@
     },
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 1.7647642679900717,
-      "maxWaypointRelativePos": 2.0,
+      "minWaypointRelativePos": 2.55,
+      "maxWaypointRelativePos": 3.0,
       "constraints": {
         "maxVelocity": 1.5,
         "maxAcceleration": 1.5,
@@ -97,13 +126,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 135.74405920288862
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": false
 }

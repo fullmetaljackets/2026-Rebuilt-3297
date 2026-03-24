@@ -20,12 +20,12 @@
         "y": 2.5
       },
       "prevControl": {
-        "x": 4.995866666666667,
-        "y": 2.4758888888888886
+        "x": 4.995534613994548,
+        "y": 2.4865958009524887
       },
       "nextControl": {
-        "x": 5.961086586828091,
-        "y": 2.514377029325473
+        "x": 6.033420454545454,
+        "y": 2.5095909090909094
       },
       "isLocked": false,
       "linkedName": null
@@ -52,14 +52,55 @@
     {
       "waypointRelativePos": 1.0106951871657779,
       "rotationDegrees": -45.0
+    },
+    {
+      "waypointRelativePos": 1.5974842767295623,
+      "rotationDegrees": 45.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.7271095152603224,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 1.5,
+        "maxAcceleration": 1.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeUp",
+      "waypointRelativePos": 0.7037701974865345,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeUp"
+        }
+      }
+    },
+    {
+      "name": "IntakeHold",
+      "waypointRelativePos": 1.8491921005385998,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeHold"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -67,7 +108,7 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": 90.0
+    "rotation": 45.0
   },
   "reversed": false,
   "folder": "Bump",

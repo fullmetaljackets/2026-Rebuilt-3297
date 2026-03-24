@@ -81,7 +81,7 @@ public class BackIntakeMotor extends SubsystemBase{
           }
 
     }
-    public void setShooterSpeed(double velSetpoint, double accSetpoint){
+    public void setIntakeSpeed(double velSetpoint, double accSetpoint){
         BackIntakeMotor.setControl(m_vdReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0).withEnableFOC(true));
         // Ryan - give this FOC profile a try
         //        BackIntakeMotor.setControl(m_vdFOCReq.withVelocity(velSetpoint).withSlot(0).withAcceleration(accSetpoint).withSlot(0));

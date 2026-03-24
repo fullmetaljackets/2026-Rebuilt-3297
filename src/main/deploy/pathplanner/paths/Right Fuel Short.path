@@ -17,18 +17,39 @@
     {
       "anchor": {
         "x": 5.775,
-        "y": 5.65
+        "y": 4.035
       },
       "prevControl": {
         "x": 5.775,
-        "y": 4.856375000000002
+        "y": 3.5278819779458725
+      },
+      "nextControl": {
+        "x": 5.775,
+        "y": 4.542118022054128
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.476613636363636,
+        "y": 5.694397727272727
+      },
+      "prevControl": {
+        "x": 5.837590909090909,
+        "y": 5.601636363636365
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Fuel Right Short Sweep End"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.2452830188679231,
+      "rotationDegrees": -90.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
@@ -54,7 +75,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -143.3438915840332
   },
   "reversed": false,
   "folder": "Fuel",

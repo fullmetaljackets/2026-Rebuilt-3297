@@ -27,7 +27,7 @@ public class IntakeRun extends Command {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        s_IntakeMotor.setShooterSpeed(m_IntakeVel, m_IntakeAcc);
+        s_IntakeMotor.setIntakeSpeed(m_IntakeVel, m_IntakeAcc);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -39,7 +39,7 @@ public class IntakeRun extends Command {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_IntakeMotor.setShooterSpeed(0, m_IntakeAcc);
+        s_IntakeMotor.setIntakeSpeed(0, m_IntakeAcc);
         // s_TestIntakeMotor.IntakeMotorOneRun(0);
     }
 

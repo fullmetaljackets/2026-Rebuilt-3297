@@ -3,70 +3,66 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.3,
-        "y": 7.15
+        "x": 8.5,
+        "y": 0.8
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.3,
-        "y": 4.230750120362699
+        "x": 7.8165,
+        "y": 1.190318181818183
       },
       "isLocked": false,
-      "linkedName": "Fuel Left Long Sweep Start"
+      "linkedName": "Fuel Left Destroy End"
     },
     {
       "anchor": {
-        "x": 7.538215909090908,
-        "y": 4.55
+        "x": 5.528386363636363,
+        "y": 5.65
       },
       "prevControl": {
-        "x": 8.208315298924092,
-        "y": 4.577326710727072
+        "x": 6.084954545454544,
+        "y": 5.627136363636365
       },
       "nextControl": {
-        "x": 6.857055555555556,
-        "y": 4.522222222222222
+        "x": 5.278597039425809,
+        "y": 5.660261262614064
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 5.571
+        "x": 3.199045454545454,
+        "y": 5.65
       },
       "prevControl": {
-        "x": 6.360088888888889,
-        "y": 4.570944444444445
+        "x": 3.860578620012119,
+        "y": 5.65
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Left Long Sweep Mid New"
+      "linkedName": "Fuel To Left Bump"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3994252873563227,
-      "rotationDegrees": 85.0
+      "waypointRelativePos": 0.16666666666666674,
+      "rotationDegrees": -59.99999999999999
     },
     {
-      "waypointRelativePos": 0.9482758620689679,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 0.6572327044025157,
+      "rotationDegrees": -59.99999999999999
     },
     {
-      "waypointRelativePos": 1.1695402298850555,
-      "rotationDegrees": 0.0
-    },
-    {
-      "waypointRelativePos": 1.8041493775933588,
-      "rotationDegrees": -90.0
+      "waypointRelativePos": 1.1729559748427691,
+      "rotationDegrees": 160.0
     }
   ],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.3770197486535,
-      "maxWaypointRelativePos": 2.0,
+      "minWaypointRelativePos": 0.8438061041292637,
+      "maxWaypointRelativePos": 1.224416517055657,
       "constraints": {
         "maxVelocity": 2.0,
         "maxAcceleration": 2.0,
@@ -81,8 +77,8 @@
   "eventMarkers": [
     {
       "name": "IntakeRun",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": 0.7755834829443446,
       "command": {
         "type": "named",
         "data": {
@@ -100,14 +96,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -100.0
+    "velocity": 1.0,
+    "rotation": 160.0
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 1.0,
-    "rotation": 85.0
+    "velocity": 0.0,
+    "rotation": -45.0
   },
   "useDefaultConstraints": false
 }

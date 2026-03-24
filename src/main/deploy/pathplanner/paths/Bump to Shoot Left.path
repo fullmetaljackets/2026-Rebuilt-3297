@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.230204545454545,
-        "y": 5.349670454545456
+        "x": 2.3641931818181816,
+        "y": 4.797704545454547
       },
       "isLocked": false,
       "linkedName": "Fuel To Left Bump"
@@ -20,8 +20,8 @@
         "y": 4.05
       },
       "prevControl": {
-        "x": 2.138977272727273,
-        "y": 3.756715909090909
+        "x": 2.3848068181818176,
+        "y": 3.9525454545454544
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,7 +34,21 @@
       "rotationDegrees": 180.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7145421903052065,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [
     {

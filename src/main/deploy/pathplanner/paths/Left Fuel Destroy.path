@@ -17,11 +17,11 @@
     {
       "anchor": {
         "x": 8.5,
-        "y": 0.5
+        "y": 0.8
       },
       "prevControl": {
         "x": 8.523355555555556,
-        "y": 1.3378999999999999
+        "y": 1.6379
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,7 +32,7 @@
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.7751861042183636,
+      "minWaypointRelativePos": 0.8168761220825853,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
         "maxVelocity": 1.5,
@@ -47,19 +47,19 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "IntakeRun",
-      "waypointRelativePos": 0.0,
+      "name": "IntakeDown",
+      "waypointRelativePos": 0.8043087971274687,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "IntakeRun"
+          "name": "IntakeDown"
         }
       }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -68,13 +68,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -45.0
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 1.0,
-    "rotation": -90.0
+    "velocity": 1.5,
+    "rotation": -45.0
   },
   "useDefaultConstraints": false
 }

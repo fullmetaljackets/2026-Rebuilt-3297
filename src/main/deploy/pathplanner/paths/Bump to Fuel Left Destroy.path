@@ -36,8 +36,8 @@
         "y": 6.9
       },
       "prevControl": {
-        "x": 8.484377777780896,
-        "y": 8.010733333336253
+        "x": 8.527670454545454,
+        "y": 8.147420454545454
       },
       "nextControl": null,
       "isLocked": false,
@@ -52,22 +52,63 @@
     {
       "waypointRelativePos": 1.047244094488189,
       "rotationDegrees": 45.0
+    },
+    {
+      "waypointRelativePos": 1.383647798742138,
+      "rotationDegrees": 45.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.8438061041292637,
+      "maxWaypointRelativePos": 1.156193895870737,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeUp",
+      "waypointRelativePos": 0.6427289048473965,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeUp"
+        }
+      }
+    },
+    {
+      "name": "IntakeHold",
+      "waypointRelativePos": 1.9281867145421923,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeHold"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 1.0,
-    "rotation": -90.0
+    "velocity": 1.5,
+    "rotation": -45.0
   },
   "reversed": false,
   "folder": "Bump",
@@ -75,5 +116,5 @@
     "velocity": 0,
     "rotation": 0.7073193685442478
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

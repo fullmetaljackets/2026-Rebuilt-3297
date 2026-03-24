@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.28948888888889,
-        "y": 3.654966666666666
+        "x": 8.259693181818182,
+        "y": 3.8288636363636366
       },
       "isLocked": false,
       "linkedName": "Fuel Right Long Sweep Start"
@@ -46,11 +46,11 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3505747126436783,
-      "rotationDegrees": -85.0
+      "waypointRelativePos": 0.4182389937106918,
+      "rotationDegrees": -75.0
     },
     {
-      "waypointRelativePos": 0.8965517241379313,
+      "waypointRelativePos": 1.0188679245283025,
       "rotationDegrees": 0.0
     },
     {
@@ -62,7 +62,21 @@
       "rotationDegrees": 90.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.3590664272890482,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
@@ -78,8 +92,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 4.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,

@@ -4,23 +4,39 @@
     {
       "anchor": {
         "x": 8.5,
-        "y": 7.6
+        "y": 7.25
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.02638661792659,
-        "y": 7.6
+        "x": 8.280306818181817,
+        "y": 7.632079545454545
       },
       "isLocked": false,
       "linkedName": "Fuel Right Sweep Destroy End"
     },
     {
       "anchor": {
-        "x": 5.9,
+        "x": 7.229011363636363,
         "y": 7.6
       },
       "prevControl": {
-        "x": 6.561533165466665,
+        "x": 7.479011363636363,
+        "y": 7.6
+      },
+      "nextControl": {
+        "x": 6.979011363636363,
+        "y": 7.6
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.6,
+        "y": 7.6
+      },
+      "prevControl": {
+        "x": 6.261533165466664,
         "y": 7.6
       },
       "nextControl": null,
@@ -28,10 +44,41 @@
       "linkedName": "Left Side Heard End"
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.44025157232704415,
+      "rotationDegrees": 0.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.806104129263913,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.25,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
@@ -42,13 +89,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 90.0
+    "velocity": 1.0,
+    "rotation": 45.0
   },
   "useDefaultConstraints": true
 }
