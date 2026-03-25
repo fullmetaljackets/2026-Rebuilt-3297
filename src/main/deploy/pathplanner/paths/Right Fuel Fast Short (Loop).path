@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.9092613636363645,
-        "y": 3.519659090909091
+        "x": 7.75,
+        "y": 3.6628702003873723
       },
       "isLocked": false,
       "linkedName": "Fuel Right Sweep Start"
@@ -20,12 +20,12 @@
         "y": 3.6433409090909095
       },
       "prevControl": {
-        "x": 7.476249587043313,
-        "y": 3.628773525211673
+        "x": 7.843752862272916,
+        "y": 3.6293048799383563
       },
       "nextControl": {
-        "x": 6.754897727272727,
-        "y": 3.6536477272727277
+        "x": 6.705473482697928,
+        "y": 3.649529922958621
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 2.6332727272727277
       },
       "prevControl": {
-        "x": 6.146795454545454,
-        "y": 3.447511363636364
+        "x": 6.193193530707884,
+        "y": 3.4919053223463004
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3113207547169811,
+      "waypointRelativePos": 0.4199170124481312,
       "rotationDegrees": -85.0
     },
     {
@@ -54,21 +54,7 @@
       "rotationDegrees": 0.0
     }
   ],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.45242369838420254,
-      "maxWaypointRelativePos": 2.0,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
-        "maxAngularVelocity": 200.0,
-        "maxAngularAcceleration": 360.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
@@ -84,10 +70,10 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 200.0,
-    "maxAngularAcceleration": 360.0,
+    "maxVelocity": 1.25,
+    "maxAcceleration": 1.25,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },

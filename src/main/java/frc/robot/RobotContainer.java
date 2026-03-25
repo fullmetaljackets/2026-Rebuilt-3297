@@ -23,16 +23,15 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
-import frc.robot.commands.GetDistanceToHub;
 import frc.robot.commands.ShooterRun;
+import frc.robot.commands.WinchHold;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
-import frc.robot.commands.WinchHold;
 import frc.robot.commands.grouped.IntakeRun;
 import frc.robot.commands.grouped.IntakeRunFast;
 import frc.robot.commands.grouped.IntakeRunFastReverse;
 import frc.robot.commands.grouped.IntakeRunReverse;
-import frc.robot.commands.grouped.Shoot2;
+import frc.robot.commands.grouped.Shoot3;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.BackIntakeMotor;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -71,7 +70,7 @@ public class RobotContainer {
     public RobotContainer() {
         NamedCommands.registerCommand("IntakeRun", new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(43, 1000, s_ShooterMotor));
-        NamedCommands.registerCommand("Shoot", new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
+        NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor));
         NamedCommands.registerCommand("IntakeUp", new WinchRun(-0.2, s_WinchMotor));
         NamedCommands.registerCommand("IntakeHold", new WinchToSetpoint(0.1, -9.23, s_WinchMotor));
         NamedCommands.registerCommand("IntakeDown", new WinchToSetpoint(0.1, -1, s_WinchMotor));
@@ -122,10 +121,10 @@ public class RobotContainer {
 
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
-        // CopilotStick.rightBumper().whileTrue(new ShooterRun(95, 1000, s_ShooterMotor));
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(44.5, 1000, s_ShooterMotor));
+        CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(44.4, 1000, s_ShooterMotor));
 
-        // DriveStick.rightBumper().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
+        // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
         DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor));
 
         //Intake
@@ -133,7 +132,7 @@ public class RobotContainer {
 
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
         //Winch
-        CopilotStick.povDown().whileTrue(new WinchRun(0.2, s_WinchMotor));
+        CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
         CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
         CopilotStick.povDown().onFalse(new WinchHold(0.1, s_WinchMotor));
         CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));

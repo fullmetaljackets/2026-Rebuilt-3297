@@ -27,6 +27,12 @@
           "data": {
             "pathName": "Bump to Shoot Right"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
         }
       ]
     }

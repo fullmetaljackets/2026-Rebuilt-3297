@@ -12,10 +12,10 @@ import frc.robot.subsystems.WinchMotor;
 
 
 public class Shoot extends ParallelCommandGroup{
-    public Shoot(ShooterMotor s_ShooterMotor, FeederMotor s_FeederMotor, WinchMotor s_WinchMotor, IntakeMotor s_IntakeMotor, BackIntakeMotor s_BackIntakeMotor){
+    public Shoot(ShooterMotor s_ShooterMotor, FeederMotor s_FeederMotor, WinchMotor s_WinchMotor){
         addCommands(
             new ShooterRun(43, 1000, s_ShooterMotor),
-            new WinchRun(-0.2, s_WinchMotor),
+            // new WinchRun(-0.2, s_WinchMotor),
             new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)
             // new IntakeRunSlow(s_IntakeMotor, s_BackIntakeMotor)
         );
