@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.084954545454545,
-        "y": 2.5302045454545454
+        "x": 5.9898,
+        "y": 2.6025666666666654
       },
       "isLocked": false,
       "linkedName": "Fuel Right Sweep Mid End New"
@@ -46,8 +46,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.9166666666666683,
-      "rotationDegrees": -160.0
+      "waypointRelativePos": 0.8049792531120308,
+      "rotationDegrees": -150.0
     }
   ],
   "constraintZones": [],
@@ -69,7 +69,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0.0,
-    "rotation": 132.93748412290043
+    "rotation": 151.0402045062716
   },
   "useDefaultConstraints": true
 }

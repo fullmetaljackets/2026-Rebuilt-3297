@@ -3,45 +3,40 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.199045454545454,
-        "y": 5.65
+        "x": 7.75,
+        "y": 1.1800113636363643
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.111511111111111,
-        "y": 4.989955555555555
+        "x": 7.75,
+        "y": 2.330983868638288
       },
       "isLocked": false,
-      "linkedName": "Fuel To Left Bump"
+      "linkedName": "Fuel Right Sweep Start"
     },
     {
       "anchor": {
-        "x": 3.2,
-        "y": 4.05
+        "x": 7.75,
+        "y": 6.3
       },
       "prevControl": {
-        "x": 2.5012888888888885,
-        "y": 3.9765333333333333
+        "x": 7.75,
+        "y": 5.506375
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Shoot"
+      "linkedName": "Fuel Right Sweep End"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.6133333333333313,
-      "rotationDegrees": 180.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.7910669975186098,
+      "minWaypointRelativePos": 0.8962779156327539,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
-        "maxVelocity": 0.5,
-        "maxAcceleration": 0.5,
+        "maxVelocity": 1.5,
+        "maxAcceleration": 1.5,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
         "nominalVoltage": 12.0,
@@ -52,13 +47,13 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "ShooterWarmup",
-      "waypointRelativePos": 0,
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "ShooterWarmup"
+          "name": "IntakeRun"
         }
       }
     }
@@ -73,13 +68,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -80.0
   },
   "reversed": false,
-  "folder": "Shoot",
+  "folder": "Fuel",
   "idealStartingState": {
     "velocity": 1.0,
-    "rotation": 150.0
+    "rotation": -80.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

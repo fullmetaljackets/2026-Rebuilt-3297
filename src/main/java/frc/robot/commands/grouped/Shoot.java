@@ -2,6 +2,7 @@ package frc.robot.commands.grouped;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.commands.FeederRun;
+import frc.robot.commands.FeederRunPercentage;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchRun;
 import frc.robot.subsystems.BackIntakeMotor;
@@ -16,7 +17,7 @@ public class Shoot extends ParallelCommandGroup{
         addCommands(
             new ShooterRun(43, 1000, s_ShooterMotor),
             // new WinchRun(-0.2, s_WinchMotor),
-            new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)
+            new FeederRunPercentage(1, s_FeederMotor)
             // new IntakeRunSlow(s_IntakeMotor, s_BackIntakeMotor)
         );
     }

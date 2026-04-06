@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.784284090909091,
-        "y": 2.5095909090909094
+        "x": 6.935011111111111,
+        "y": 2.6902666666666666
       },
       "isLocked": false,
       "linkedName": "Fuel Left Long Sweep End"
@@ -68,8 +68,8 @@
   "reversed": false,
   "folder": "Bump",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 86.3930058362679
+    "velocity": 0.0,
+    "rotation": 80.0
   },
   "useDefaultConstraints": true
 }

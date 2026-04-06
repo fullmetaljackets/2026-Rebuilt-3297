@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.661897727272727,
-        "y": 5.539795454545454
+        "x": 7.636611111111112,
+        "y": 5.574622222222222
       },
       "isLocked": false,
       "linkedName": "Fuel Left Long Sweep Mid"
@@ -20,12 +20,12 @@
         "y": 5.65
       },
       "prevControl": {
-        "x": 5.890059158670496,
-        "y": 5.624592323119658
+        "x": 5.890820610106288,
+        "y": 5.65
       },
       "nextControl": {
-        "x": 5.034623217188491,
-        "y": 5.675912126425454
+        "x": 5.033846647730213,
+        "y": 5.65
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 5.65
       },
       "prevControl": {
-        "x": 3.8340454545454534,
-        "y": 5.676113636363637
+        "x": 3.83458217418023,
+        "y": 5.65
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.8448275862068967,
+      "waypointRelativePos": 0.5892116182572624,
       "rotationDegrees": 160.0
     }
   ],
@@ -63,12 +63,12 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": 160.0
+    "rotation": 150.0
   },
   "reversed": false,
   "folder": "Bump",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 0.0,
     "rotation": 86.3930058362679
   },
   "useDefaultConstraints": true

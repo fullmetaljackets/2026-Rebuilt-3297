@@ -36,8 +36,8 @@
         "y": 2.45
       },
       "prevControl": {
-        "x": 4.021088888888889,
-        "y": 2.434855178907721
+        "x": 4.02124791249953,
+        "y": 2.45
       },
       "nextControl": null,
       "isLocked": false,
@@ -69,7 +69,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -86.5
+    "rotation": -80.0
   },
   "useDefaultConstraints": true
 }

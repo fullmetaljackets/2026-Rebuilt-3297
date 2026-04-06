@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.611556818181818,
-        "y": 2.9218636363636374
+        "x": 2.1992111111111114,
+        "y": 2.9143888888888885
       },
       "isLocked": false,
       "linkedName": "Fuel To Right Bump"
@@ -20,8 +20,8 @@
         "y": 4.05
       },
       "prevControl": {
-        "x": 2.3745,
-        "y": 4.065920454545455
+        "x": 2.355122222222222,
+        "y": 4.054488888888889
       },
       "nextControl": null,
       "isLocked": false,
@@ -37,20 +37,7 @@
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.5151364764268005,
-      "maxWaypointRelativePos": 0.7732009925558381,
-      "constraints": {
-        "maxVelocity": 1.0,
-        "maxAcceleration": 1.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    },
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.7771712158808886,
+      "minWaypointRelativePos": 0.779156327543422,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
         "maxVelocity": 0.5,

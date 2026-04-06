@@ -50,11 +50,29 @@
       "rotationDegrees": -85.0
     },
     {
-      "waypointRelativePos": 0.89937106918239,
+      "waypointRelativePos": 0.8912863070539461,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 0.974273858921165,
       "rotationDegrees": 0.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.8119106699751834,
+      "maxWaypointRelativePos": 1.359801488833748,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
@@ -70,8 +88,8 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.25,
-    "maxAcceleration": 1.25,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -79,13 +97,13 @@
   },
   "goalEndState": {
     "velocity": 0.0,
-    "rotation": 132.93748412290043
+    "rotation": 151.0402045062716
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
     "velocity": 1.0,
-    "rotation": -86.5
+    "rotation": -80.0
   },
   "useDefaultConstraints": false
 }

@@ -56,7 +56,19 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeRun",
+      "waypointRelativePos": 1.3439205955335065,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeRun"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 2.0,
@@ -67,13 +79,13 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": 85.0
+    "rotation": 80.0
   },
   "reversed": false,
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.7073193685442478
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

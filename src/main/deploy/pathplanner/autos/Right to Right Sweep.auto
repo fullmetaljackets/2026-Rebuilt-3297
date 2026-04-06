@@ -7,19 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Left"
+            "pathName": "Bump to Fuel Right"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Fuel"
+            "pathName": "Right Fuel Fast"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Right to Bump"
+            "pathName": "Fuel Left to Bump Right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Right Mid Long To Bump (Loop)"
           }
         },
         {

@@ -115,9 +115,9 @@ public class Limelight extends SubsystemBase {
     }
     
     // Penalize if too far away (> 4 meters)
-    if (avgDist > 4) {
-      xStdDev *= 1.5;
-      yStdDev *= 1.5;
+    if (avgDist > 3) {
+      xStdDev *= 9999;
+      yStdDev *= 9999;
       // Don't penalize rotation since we're already ignoring it
     }
     

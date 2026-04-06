@@ -121,8 +121,9 @@ public class RobotContainer {
 
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
-        CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(44.4, 1000, s_ShooterMotor));
+        // CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
+        CopilotStick.rightBumper().and(CopilotStick.leftTrigger()).whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(44, 1000, s_ShooterMotor));
 
         // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
         DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor));

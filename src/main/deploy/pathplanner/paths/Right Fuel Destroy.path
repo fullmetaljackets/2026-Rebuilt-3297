@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 8.5,
-        "y": 1.18
+        "y": 2.5
       },
       "prevControl": null,
       "nextControl": {
         "x": 8.5,
-        "y": 2.330972505001924
+        "y": 3.650972505001924
       },
       "isLocked": false,
       "linkedName": "Fuel Right Sweep Destroy Start"
@@ -47,8 +47,19 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
+      "name": "IntakeHold",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "IntakeHold"
+        }
+      }
+    },
+    {
       "name": "IntakeDown",
-      "waypointRelativePos": 0.7971274685816877,
+      "waypointRelativePos": 0.7493796526054614,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
@@ -73,7 +84,7 @@
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 1.0,
+    "velocity": 1.25,
     "rotation": 45.0
   },
   "useDefaultConstraints": false
