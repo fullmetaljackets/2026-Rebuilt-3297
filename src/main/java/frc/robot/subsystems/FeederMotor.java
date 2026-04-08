@@ -41,7 +41,7 @@ public class FeederMotor extends SubsystemBase{
         FeederMotor.getConfigurator().apply(TalonFXConfig);
 
         FeedbackConfigs fdc = TalonFXConfig.Feedback;
-        fdc.SensorToMechanismRatio = 1.5; // 1 rotation of the sensor results in 1.33 rotations of the mechanism
+        fdc.SensorToMechanismRatio = 3.375; // 1 rotation of the sensor results in 1.33 rotations of the mechanism
 
         Slot0Configs slot0 = TalonFXConfig.Slot0;
         slot0.kS = 0.14496; // Add 0.25 V output to overcome static friction
