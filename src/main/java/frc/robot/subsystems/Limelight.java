@@ -14,7 +14,7 @@ import frc.robot.generated.TunerConstants;
 
 public class Limelight extends SubsystemBase {
 
-  private static final String LL_NAME = "limelight";
+  private static final String LL_NAME = "limelight-one";
   
   // Standard deviations for vision measurements
   // Increase these values if the vision data is noisy or unreliable

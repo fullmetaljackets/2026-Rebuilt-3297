@@ -34,12 +34,15 @@ public class ShooterRun extends Command {
     @Override
     public void execute() {
         // s_TestShooterMotor.IntakeMotorOneRun(m_ShooterVel);
+        // s_ShooterMotor.setShooterSpeed(m_ShooterVel, m_ShooterAcc);
+
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        s_ShooterMotor.setShooterSpeed(0, m_ShooterAcc);
+        s_ShooterMotor.ShooterMotorRun(0);
+        // s_ShooterMotor.setShooterSpeed(0, m_ShooterAcc);
         // s_TestShooterMotor.IntakeMotorOneRun(0);
     }
 
