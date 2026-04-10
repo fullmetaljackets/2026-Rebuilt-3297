@@ -169,22 +169,6 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
-        // // Simple drive forward auton
-        // final var idle = new SwerveRequest.Idle();
-        // return Commands.sequence(
-        //     // Reset our field centric heading to match the robot
-        //     // facing away from our alliance station wall (0 deg).
-        //     drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
-        //     // Then slowly drive forward (away from us) for 5 seconds.
-        //     drivetrain.applyRequest(() ->
-        //         drive.withVelocityX(0.5)
-        //             .withVelocityY(0)
-        //             .withRotationalRate(0)
-        //     )
-        //     .withTimeout(5.0),
-        //     // Finally idle for the rest of auton
-        //     drivetrain.applyRequest(() -> idle)
-        // );
     }
 
     /**
@@ -192,28 +176,43 @@ public class RobotContainer {
      * Call this method periodically to integrate vision data into the pose estimate
      */
     public void updateOdometryWithLimelight() {
-        // Check if Limelight has a valid pose estimate
-        var limelightPose = limelight.getPoseEstimate();
-        
-        if (limelightPose != null && limelight.hasValidPoseEstimate()) {
-            // Get the pose and timestamp
-            edu.wpi.first.math.geometry.Pose2d limelightFullPose = limelightPose.pose;
-            double timestamp = limelightPose.timestampSeconds;
-            var stdDevs = limelight.getVisionStandardDeviations();
-            
-            // IMPORTANT: Only use X and Y from Limelight, keep the gyro's rotation
-            // Limelight's rotation is based on AprilTag orientation, not robot orientation
+        // Forward both limelight camera measurements (if available) into the drivetrain estimator.
+        // The drivetrain.updateOdometryWithVision(...) method should call the WPILib pose estimator's
+        // addVisionMeasurement under the hood; calling it once per camera allows the estimator to fuse
+        // both observations optimally using their timestamps and covariances.
+
+        var intakeEst = limelight.getIntakePoseEstimate();
+        if (intakeEst != null) {
+            edu.wpi.first.math.geometry.Pose2d llPose = intakeEst.pose;
+            double ts = intakeEst.timestampSeconds;
+            var stdDevs = limelight.getVisionStdDevsForIntake();
             edu.wpi.first.math.geometry.Pose2d robotPose = new edu.wpi.first.math.geometry.Pose2d(
-                limelightFullPose.getX(),
-                limelightFullPose.getY(),
-                drivetrain.getState().Pose.getRotation()  // Use current gyro heading, not Limelight's rotation
+                llPose.getX(),
+                llPose.getY(),
+                drivetrain.getState().Pose.getRotation()
             );
-            
-            // Update the drivetrain odometry with the vision measurement
-            drivetrain.updateOdometryWithVision(robotPose, timestamp, stdDevs);
-            
-            // Debug logging
-            SmartDashboard.putString("Vision/Status", "Updating odometry");
+            drivetrain.updateOdometryWithVision(robotPose, ts, stdDevs);
+            SmartDashboard.putString("Vision/Status/Intake", "Pushed");
+        }
+        else if (intakeEst == null) {
+            SmartDashboard.putString("Vision/Status/Intake", "No Target");
+        }
+
+        var shooterEst = limelight.getShooterPoseEstimate();
+        if (shooterEst != null) {
+            edu.wpi.first.math.geometry.Pose2d llPose = shooterEst.pose;
+            double ts = shooterEst.timestampSeconds;
+            var stdDevs = limelight.getVisionStdDevsForShooter();
+            edu.wpi.first.math.geometry.Pose2d robotPose = new edu.wpi.first.math.geometry.Pose2d(
+                llPose.getX(),
+                llPose.getY(),
+                drivetrain.getState().Pose.getRotation()
+            );
+            drivetrain.updateOdometryWithVision(robotPose, ts, stdDevs);
+            SmartDashboard.putString("Vision/Status/Shooter", "Pushed");
+        }
+        else if (shooterEst == null) {
+            SmartDashboard.putString("Vision/Status/Shooter", "No Target");
         }
     }
 }

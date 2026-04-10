@@ -30,26 +30,26 @@ public class GetDistanceToHub extends Command {
 
     @Override
     public void execute() {
-        // LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
+        // // LimelightHelpers.getTargetPose3d_CameraSpace("limelight");
         
-        double distance = m_limelight.getDistanceToHub();
-        // double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-one")); // Assume you have a method to get the angle error
+        // double distance = m_limelight.getDistanceToHub();
+        // // double angleError = -Units.degreesToRadians(LimelightHelpers.getTX("limelight-one")); // Assume you have a method to get the angle error
 
         
-        // Proportional control for distance and angle
-        double ShooterSpeed = distToSpeedOffset * distance;
-        // double turnSpeed = kp_Angle * angleError;
+        // // Proportional control for distance and angle
+        // double ShooterSpeed = distToSpeedOffset * distance;
+        // // double turnSpeed = kp_Angle * angleError;
 
-        SmartDashboard.putNumber("distance", distance);
+        // SmartDashboard.putNumber("distance", distance);
 
-        SmartDashboard.putNumber("Shooter speed", ShooterSpeed);
-        // SmartDashboard.putNumber("turn speed", turnSpeed);
+        // SmartDashboard.putNumber("Shooter speed", ShooterSpeed);
+        // // SmartDashboard.putNumber("turn speed", turnSpeed);
 
-        // Drive the robot
-        // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
+        // // Drive the robot
+        // // drivetrain.arcadeDrive(forwardSpeed, turnSpeed);
 
 
-        s_ShooterMotor.setShooterSpeed(ShooterSpeed, m_ShooterAcc);
+        // s_ShooterMotor.setShooterSpeed(ShooterSpeed, m_ShooterAcc);
     }
 
     @Override
