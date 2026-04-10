@@ -15,7 +15,7 @@ import frc.robot.generated.TunerConstants;
 public class Limelight extends SubsystemBase {
 
   private static final String Intake_LL = "limelight-one";
-  private static final String ShooterLL_Name = "limelight-two";
+  private static final String Shooter_LL = "limelight-two";
 
   
   // Standard deviations for vision measurements
@@ -27,7 +27,7 @@ public class Limelight extends SubsystemBase {
     // Configure Limelight with your camera mount position
     // Adjust these values to match your camera's physical placement on the robot
     LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.04445, -0.0508, 0.7493, 0, 21, 0);
-    LimelightHelpers.setCameraPose_RobotSpace(ShooterLL_Name, 0, 0, 0, 0, 0, 0);
+    LimelightHelpers.setCameraPose_RobotSpace(Shooter_LL, 0, 0, 0, 0, 0, 0);
   }
 
   /**
@@ -47,7 +47,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public PoseEstimate getShooterPoseEstimate() {
-    return getPoseEstimateForName(ShooterLL_Name);
+    return getPoseEstimateForName(Shooter_LL);
   }
 
   /**
@@ -86,7 +86,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public Matrix<N3, N1> getVisionStdDevsForShooter() {
-    return computeStdDevsForName(ShooterLL_Name);
+    return computeStdDevsForName(Shooter_LL);
   }
 
   /**
@@ -103,7 +103,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public boolean hasValidShooterPoseEstimate() {
-    return hasValidPoseEstimateForName(ShooterLL_Name);
+    return hasValidPoseEstimateForName(Shooter_LL);
   }
 
   /**
@@ -117,7 +117,7 @@ public class Limelight extends SubsystemBase {
     return getTargetCountForName(Intake_LL);
   }
   public int getShooterTargetCount() {
-    return getTargetCountForName(ShooterLL_Name);
+    return getTargetCountForName(Shooter_LL);
   }
 
   /**
