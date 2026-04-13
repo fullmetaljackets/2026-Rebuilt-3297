@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.LimelightHelpers.PoseEstimate;
@@ -29,6 +30,11 @@ public class Limelight extends SubsystemBase {
     LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.04445, -0.0508, 0.7493, 0, 21, 0);
     LimelightHelpers.setCameraPose_RobotSpace(Shooter_LL, 0, 0, 0, 0, 0, 0);
   }
+
+  /**
+   * Mirror hub poses between alliances. Field dimensions are taken from
+   * `TunerConstants` so they can be tuned centrally.
+   */
 
   /**
    * Get a PoseEstimate for a specific Limelight camera name (returns null if invalid)
@@ -120,6 +126,8 @@ public class Limelight extends SubsystemBase {
     return getTargetCountForName(Shooter_LL);
   }
 
+  
+
   /**
    * Get the average distance to detected AprilTags
    * @return Distance in meters
@@ -129,5 +137,65 @@ public class Limelight extends SubsystemBase {
   public void periodic() {
     SmartDashboard.putBoolean("Intake_LL Has Valid Pose", hasValidIntakePoseEstimate());
     SmartDashboard.putBoolean("Shooter_LL Has Valid Pose", hasValidShooterPoseEstimate());
+  }
+
+    /**
+   * Return a hub pose that is mirrored for the current alliance. Provide the
+   * hub pose defined for the BLUE alliance; this method will return the
+   * equivalent pose for the RED alliance by reflecting across the field center.
+   *
+   * @param hubPoseBlue known Pose2d of the hub for the BLUE alliance coordinate frame
+   * @return Pose2d adjusted for the current alliance
+   */
+  public Pose2d getHubPoseForAlliance() {
+  var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
+    if (alliance == DriverStation.Alliance.Red) { 
+      return TunerConstants.kHubPoseRed;
+    }
+    // Blue alliance:
+    return TunerConstants.kHubPoseBlue;
+  }
+
+  /**
+   * Compute the planar distance between the robot and the hub using field poses.
+   * If robotPose is null, this method will attempt to use the Limelight's latest
+   * field-relative pose estimate. Returns Double.NaN if no robot pose is available.
+   *
+   * @param robotPose The robot's field-relative Pose2d (may be null to use Limelight estimate)
+   * @param hubPose The hub's known field-relative Pose2d
+   * @return distance in meters, or Double.NaN when unavailable
+   */
+  public double getDistanceToHub(Pose2d robotPose, Pose2d hubPose) {
+    Pose2d rp = null;
+    if (robotPose != null) {
+      rp = robotPose;
+    } 
+    // else {
+    //   // Prefer intake Limelight estimate, fall back to shooter if intake not available
+    //   PoseEstimate est = getPoseEstimateForName(Intake_LL);
+    //   if (est == null) {
+    //     est = getPoseEstimateForName(Shooter_LL);
+    //   }
+    //   if (est != null) {
+    //     rp = est.pose;
+    //   }
+    // }
+    if (rp == null || hubPose == null) {
+      return Double.NaN;
+    }
+
+    return rp.getTranslation().getDistance(hubPose.getTranslation());
+  }
+  public double getRotationToHub(Pose2d robotPose, Pose2d hubPose) {
+    Pose2d rp = null;
+    if (robotPose != null) {
+      rp = robotPose;
+    } 
+    if (rp == null || hubPose == null) {
+      return Double.NaN;
+    }
+
+    Rotation2d toHub = new Rotation2d(hubPose.getX() - rp.getX(), hubPose.getY() - rp.getY());
+    return toHub.minus(rp.getRotation()).getDegrees();
   }
 }

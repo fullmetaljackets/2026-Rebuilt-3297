@@ -10,6 +10,8 @@ import com.ctre.phoenix6.swerve.*;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants.*;
 
 import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.units.measure.*;
@@ -23,6 +25,25 @@ public class TunerConstants {
     public static final double LLMountAngle = 25; // The angle at which the intake limelight is mounted, in degrees
     public static final double LLHight = 29.5; // The height of the\
     public static final double ApriltagHeight = 44.5; // The height of the apriltags, in inches
+    
+    // Field dimensions (meters) - standard FRC field 54 ft x 27 ft
+    public static final double kFieldLengthMeters = 16.5409; // 54 ft in meters
+    public static final double kFieldWidthMeters = 8.06958;   // 27 ft in meters
+
+    // Canonical hub pose for the BLUE alliance (meters). This should be the
+    // field-relative Pose2d for the hub as defined in the BLUE coordinate frame.
+    // Update X/Y/rotation to match your field mapping if necessary.
+    public static final Pose2d kHubPoseBlue = new Pose2d(
+        4.62559, // x cordinate of blue hub
+        4.034536, // y cordinate of blue hub
+        null // don't need a rotation for the hub
+    );
+        public static final Pose2d kHubPoseRed = new Pose2d(
+        11.915394, // x cordinate of Red hub
+        4.034536, // y cordinate of Red hub
+        null // don't need a rotation for the hub
+    );
+
     // Both sets of gains need to be tuned to your individual robot.
 
     // The steer motor uses any SwerveModule.SteerRequestType control request with the
