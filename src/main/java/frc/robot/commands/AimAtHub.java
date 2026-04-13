@@ -2,6 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+
+import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.LimelightHelpers;
 import frc.robot.LimelightHelpers.PoseEstimate;
@@ -11,6 +15,7 @@ import frc.robot.subsystems.ShooterMotor;
 
 public class AimAtHub extends Command {
     private final Limelight m_limelight;
+    private final SwerveRequest.RobotCentric m_alignRequest;
     private final CommandSwerveDrivetrain drivetrain;
     // private final double kp_Strafe = 2;
     // private final double kp_Angle = 1.7;
@@ -18,6 +23,8 @@ public class AimAtHub extends Command {
     public AimAtHub(Limelight limelight, CommandSwerveDrivetrain drivetrain) {
         m_limelight = limelight;
         this.drivetrain = drivetrain;
+        m_alignRequest = new SwerveRequest.RobotCentric()
+            .withDriveRequestType(DriveRequestType.Velocity);
         addRequirements(limelight, drivetrain);
     }
 
@@ -43,6 +50,13 @@ public class AimAtHub extends Command {
             hubpose.getX() - robotPose.getX()
         ));
         SmartDashboard.putNumber("Rotation To Hub (deg)", rotationToHub);
+
+        drivetrain.setControl(
+        m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
+            .withVelocityY(0) // Drive left with negative X (left)
+            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
+        );
+
     }
 
     @Override
