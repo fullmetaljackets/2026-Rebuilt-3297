@@ -27,8 +27,8 @@ public class Limelight extends SubsystemBase {
   public Limelight() {
     // Configure Limelight with your camera mount position
     // Adjust these values to match your camera's physical placement on the robot
-    LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.04445, -0.0508, 0.7493, 0, 21, 0);
-    LimelightHelpers.setCameraPose_RobotSpace(Shooter_LL, 0, 0, 0, 0, 0, 0);
+    LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.0508, 0.0508, 0.7493, 0, 21, 180);
+    LimelightHelpers.setCameraPose_RobotSpace(Shooter_LL, 0.3175, 0.22225, 0.206375, 0, 32, 0);
   }
 
   /**

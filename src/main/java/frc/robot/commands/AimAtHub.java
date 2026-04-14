@@ -15,6 +15,7 @@ import frc.robot.subsystems.ShooterMotor;
 
 public class AimAtHub extends Command {
     private final Limelight m_limelight;
+    private final double kp_Angle = 0.08;
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final CommandSwerveDrivetrain drivetrain;
     // private final double kp_Strafe = 2;
@@ -50,11 +51,19 @@ public class AimAtHub extends Command {
             hubpose.getX() - robotPose.getX()
         ));
         SmartDashboard.putNumber("Rotation To Hub (deg)", rotationToHub);
+        double robotRot = drivetrain.getState().Pose.getRotation().getDegrees() + 180;
+        if (robotRot > 180)
+        robotRot = robotRot - 360;
+        SmartDashboard.putNumber("Robot Rotation (deg)", robotRot);
+        double angleError = rotationToHub - robotRot;
+        SmartDashboard.putNumber("Angle Error (deg)", angleError);
+        double rotationalRate = kp_Angle * angleError;
+        SmartDashboard.putNumber("Rotation Rate",rotationalRate);
 
         drivetrain.setControl(
         m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
             .withVelocityY(0) // Drive left with negative X (left)
-            .withRotationalRate(0) // Drive counterclockwise with negative X (left)
+            .withRotationalRate(rotationalRate) // Drive counterclockwise with negative X (left)
         );
 
     }

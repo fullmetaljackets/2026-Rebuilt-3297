@@ -21,12 +21,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
+import frc.robot.commands.AimAtHub;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
+import frc.robot.commands.GetDistToHub;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchHold;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
+import frc.robot.commands.ShootOnMove;
 import frc.robot.commands.grouped.IntakeRun;
 import frc.robot.commands.grouped.IntakeRunFast;
 import frc.robot.commands.grouped.IntakeRunFastReverse;
@@ -122,8 +125,10 @@ public class RobotContainer {
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
         // CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
-        // CopilotStick.rightBumper().and(CopilotStick.leftTrigger()).whileTrue(new ShooterRun(52, 1000, s_ShooterMotor)); //6ft back agiants tower
-        CopilotStick.rightBumper().and(CopilotStick.leftTrigger()).whileTrue(new ShooterRun(100, 1000, s_ShooterMotor)); //9ft back agianst allience wall
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(52, 1000, s_ShooterMotor)); //6ft back agiants tower
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(100, 1000, s_ShooterMotor)); //9ft back agianst allience wall
+        CopilotStick.leftTrigger().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(37.8, 1000, s_ShooterMotor));
 
         CopilotStick.rightBumper().whileTrue(new ShooterRun(34.5, 1000, s_ShooterMotor)); // agaisnt hub
 
@@ -142,7 +147,7 @@ public class RobotContainer {
         CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));
 
         //limelight
-        // DriveStick.a().whileTrue(new GetDistanceToHub(limelight, s_ShooterMotor, 1000));
+        DriveStick.a().whileTrue(new AimAtHub(limelight, drivetrain));
 
         //manuel controlls shooter
         DriveStick.leftTrigger().and(DriveStick.povUp()).whileTrue(new ShooterRun(90, 1000, s_ShooterMotor));
