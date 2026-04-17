@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-
 import frc.robot.subsystems.ShooterMotor;
 
 
@@ -33,9 +33,8 @@ public class ShooterRun extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // s_TestShooterMotor.IntakeMotorOneRun(m_ShooterVel);
-        // s_ShooterMotor.setShooterSpeed(m_ShooterVel, m_ShooterAcc);
-
+        Boolean shooterAtSetpoint = s_ShooterMotor.ShooterAtSetpoint(m_ShooterVel, 2);
+        SmartDashboard.putBoolean("Shooter Ready", shooterAtSetpoint);
     }
 
     // Called once the command ends or is interrupted.

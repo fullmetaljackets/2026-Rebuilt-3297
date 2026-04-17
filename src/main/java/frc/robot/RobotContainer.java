@@ -21,12 +21,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
+import frc.robot.commands.AimAtHub;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
+import frc.robot.commands.GetDistToHub;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchHold;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
+import frc.robot.commands.ShootOnMove;
 import frc.robot.commands.grouped.IntakeRun;
 import frc.robot.commands.grouped.IntakeRunFast;
 import frc.robot.commands.grouped.IntakeRunFastReverse;
@@ -104,7 +107,7 @@ public class RobotContainer {
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
 
-        DriveStick.x().whileTrue(drivetrain.applyRequest(() -> brake));
+        // DriveStick.x().whileTrue(drivetrain.applyRequest(() -> brake));
         // DriveStick.b().whileTrue(drivetrain.applyRequest(() ->
         //     point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
         // ));
@@ -122,10 +125,12 @@ public class RobotContainer {
         //Shooter
         // CopilotStick.leftBumper().whileTrue(new Shoot2(s_ShooterMotor, s_FeederMotor, s_WinchMotor, s_IntakeMotor, s_BackIntakeMotor));
         // CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
-        // CopilotStick.rightBumper().and(CopilotStick.leftTrigger()).whileTrue(new ShooterRun(52, 1000, s_ShooterMotor)); //6ft back agiants tower
-        CopilotStick.rightBumper().and(CopilotStick.leftTrigger()).whileTrue(new ShooterRun(100, 1000, s_ShooterMotor)); //9ft back agianst allience wall
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(52, 1000, s_ShooterMotor)); //6ft back agiants tower
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(100, 1000, s_ShooterMotor)); //9ft back agianst allience wall
+        CopilotStick.leftBumper().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
+        // CopilotStick.leftTrigger().whileTrue(new ShooterRun(37.8, 1000, s_ShooterMotor));
 
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(34.5, 1000, s_ShooterMotor)); // agaisnt hub
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(42, 1000, s_ShooterMotor)); // agaisnt hub
 
 
         // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
@@ -135,6 +140,7 @@ public class RobotContainer {
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
+
         //Winch
         CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
         CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
@@ -142,7 +148,7 @@ public class RobotContainer {
         CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));
 
         //limelight
-        // DriveStick.a().whileTrue(new GetDistanceToHub(limelight, s_ShooterMotor, 1000));
+        DriveStick.x().whileTrue(new AimAtHub(limelight, drivetrain));
 
         //manuel controlls shooter
         DriveStick.leftTrigger().and(DriveStick.povUp()).whileTrue(new ShooterRun(90, 1000, s_ShooterMotor));
@@ -150,7 +156,7 @@ public class RobotContainer {
         //manuel controlls feeder
         DriveStick.leftTrigger().and(DriveStick.povRight()).whileTrue(new FeederRunPercentage(1, s_FeederMotor));
         DriveStick.leftTrigger().and(DriveStick.povLeft()).whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
-        CopilotStick.leftBumper().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
+        CopilotStick.x().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
         //manuel controlls Intake
         DriveStick.rightTrigger().and(DriveStick.povUp()).whileTrue(new IntakeRunFast(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.rightTrigger().and(DriveStick.povDown()).whileTrue(new IntakeRunFastReverse(s_IntakeMotor, s_BackIntakeMotor));
@@ -169,22 +175,6 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
-        // // Simple drive forward auton
-        // final var idle = new SwerveRequest.Idle();
-        // return Commands.sequence(
-        //     // Reset our field centric heading to match the robot
-        //     // facing away from our alliance station wall (0 deg).
-        //     drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
-        //     // Then slowly drive forward (away from us) for 5 seconds.
-        //     drivetrain.applyRequest(() ->
-        //         drive.withVelocityX(0.5)
-        //             .withVelocityY(0)
-        //             .withRotationalRate(0)
-        //     )
-        //     .withTimeout(5.0),
-        //     // Finally idle for the rest of auton
-        //     drivetrain.applyRequest(() -> idle)
-        // );
     }
 
     /**
@@ -192,28 +182,43 @@ public class RobotContainer {
      * Call this method periodically to integrate vision data into the pose estimate
      */
     public void updateOdometryWithLimelight() {
-        // Check if Limelight has a valid pose estimate
-        var limelightPose = limelight.getPoseEstimate();
-        
-        if (limelightPose != null && limelight.hasValidPoseEstimate()) {
-            // Get the pose and timestamp
-            edu.wpi.first.math.geometry.Pose2d limelightFullPose = limelightPose.pose;
-            double timestamp = limelightPose.timestampSeconds;
-            var stdDevs = limelight.getVisionStandardDeviations();
-            
-            // IMPORTANT: Only use X and Y from Limelight, keep the gyro's rotation
-            // Limelight's rotation is based on AprilTag orientation, not robot orientation
+        // Forward both limelight camera measurements (if available) into the drivetrain estimator.
+        // The drivetrain.updateOdometryWithVision(...) method should call the WPILib pose estimator's
+        // addVisionMeasurement under the hood; calling it once per camera allows the estimator to fuse
+        // both observations optimally using their timestamps and covariances.
+
+        var intakeEst = limelight.getIntakePoseEstimate();
+        if (intakeEst != null) {
+            edu.wpi.first.math.geometry.Pose2d llPose = intakeEst.pose;
+            double ts = intakeEst.timestampSeconds;
+            var stdDevs = limelight.getVisionStdDevsForIntake();
             edu.wpi.first.math.geometry.Pose2d robotPose = new edu.wpi.first.math.geometry.Pose2d(
-                limelightFullPose.getX(),
-                limelightFullPose.getY(),
-                drivetrain.getState().Pose.getRotation()  // Use current gyro heading, not Limelight's rotation
+                llPose.getX(),
+                llPose.getY(),
+                drivetrain.getState().Pose.getRotation()
             );
-            
-            // Update the drivetrain odometry with the vision measurement
-            drivetrain.updateOdometryWithVision(robotPose, timestamp, stdDevs);
-            
-            // Debug logging
-            SmartDashboard.putString("Vision/Status", "Updating odometry");
+            drivetrain.updateOdometryWithVision(robotPose, ts, stdDevs);
+            SmartDashboard.putString("Vision/Status/Intake", "Pushed");
+        }
+        else if (intakeEst == null) {
+            SmartDashboard.putString("Vision/Status/Intake", "No Target");
+        }
+
+        var shooterEst = limelight.getShooterPoseEstimate();
+        if (shooterEst != null) {
+            edu.wpi.first.math.geometry.Pose2d llPose = shooterEst.pose;
+            double ts = shooterEst.timestampSeconds;
+            var stdDevs = limelight.getVisionStdDevsForShooter();
+            edu.wpi.first.math.geometry.Pose2d robotPose = new edu.wpi.first.math.geometry.Pose2d(
+                llPose.getX(),
+                llPose.getY(),
+                drivetrain.getState().Pose.getRotation()
+            );
+            drivetrain.updateOdometryWithVision(robotPose, ts, stdDevs);
+            SmartDashboard.putString("Vision/Status/Shooter", "Pushed");
+        }
+        else if (shooterEst == null) {
+            SmartDashboard.putString("Vision/Status/Shooter", "No Target");
         }
     }
 }

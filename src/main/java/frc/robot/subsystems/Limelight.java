@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.LimelightHelpers.PoseEstimate;
@@ -14,7 +15,9 @@ import frc.robot.generated.TunerConstants;
 
 public class Limelight extends SubsystemBase {
 
-  private static final String LL_NAME = "limelight-one";
+  private static final String Intake_LL = "limelight-one";
+  private static final String Shooter_LL = "limelight-two";
+
   
   // Standard deviations for vision measurements
   // Increase these values if the vision data is noisy or unreliable
@@ -24,156 +27,175 @@ public class Limelight extends SubsystemBase {
   public Limelight() {
     // Configure Limelight with your camera mount position
     // Adjust these values to match your camera's physical placement on the robot
-    LimelightHelpers.setCameraPose_RobotSpace(LL_NAME, 0.04445, -0.0508, 0.7493, 0, 21, 0);
+    LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.0508, 0.0508, 0.7493, 0, 21, 180);
+    LimelightHelpers.setCameraPose_RobotSpace(Shooter_LL, 0.3175, 0.22225, 0.206375, 0, 32, 0);
   }
 
   /**
-   * Get the pose estimate from Limelight's MegaTag 2 pose estimation
-   * Uses WPILib Blue alliance coordinate system
-   * @return PoseEstimate containing the robot pose and timestamp, or null if no valid estimate
+   * Mirror hub poses between alliances. Field dimensions are taken from
+   * `TunerConstants` so they can be tuned centrally.
    */
-  public PoseEstimate getPoseEstimate() {
-    // PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(LL_NAME);
-    PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiBlue(LL_NAME);
 
-    
-    // Only return if we have a valid estimate with detected targets
+  /**
+   * Get a PoseEstimate for a specific Limelight camera name (returns null if invalid)
+   */
+  public PoseEstimate getPoseEstimateForName(String limelightName) {
+    PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiBlue(limelightName);
     if (estimate != null && estimate.tagCount > 0) {
       return estimate;
     }
     return null;
   }
 
+  /** Convenience accessors for the two cameras */
+  public PoseEstimate getIntakePoseEstimate() {
+    return getPoseEstimateForName(Intake_LL);
+  }
+
+  public PoseEstimate getShooterPoseEstimate() {
+    return getPoseEstimateForName(Shooter_LL);
+  }
+
+  /**
+   * Compute per-camera vision standard deviations using the same heuristics
+   * as updateStdDevsBasedOnTargets() but per-camera.
+   */
+  private Matrix<N3, N1> computeStdDevsForName(String limelightName) {
+    PoseEstimate est = getPoseEstimateForName(limelightName);
+    int targetCount = est != null ? est.tagCount : 0;
+    double avgDist = est != null ? est.avgTagDist : 0;
+
+    double xStdDev = 0.9;
+    double yStdDev = 0.9;
+    double thetaStdDev = 9999; // VERY HIGH = ignore rotation
+
+    if (targetCount >= 2) {
+      xStdDev = 0.5;
+      yStdDev = 0.5;
+      thetaStdDev = 9999;
+    } else if (targetCount == 1) {
+      xStdDev = 0.7;
+      yStdDev = 0.7;
+      thetaStdDev = 9999;
+    }
+
+    if (avgDist > 3) {
+      xStdDev *= 9999;
+      yStdDev *= 9999;
+    }
+
+    return VecBuilder.fill(xStdDev, yStdDev, thetaStdDev);
+  }
+
+  public Matrix<N3, N1> getVisionStdDevsForIntake() {
+    return computeStdDevsForName(Intake_LL);
+  }
+
+  public Matrix<N3, N1> getVisionStdDevsForShooter() {
+    return computeStdDevsForName(Shooter_LL);
+  }
+
   /**
    * Check if we have a valid pose estimate
    * @return true if Limelight has valid AprilTag detections
    */
-  public boolean hasValidPoseEstimate() {
-    PoseEstimate estimate = getPoseEstimate();
-    return estimate != null && LimelightHelpers.getTV(LL_NAME);
+  public boolean hasValidPoseEstimateForName(String limelightName) {
+    PoseEstimate estimate = getPoseEstimateForName(limelightName);
+    return estimate != null && LimelightHelpers.getTV(limelightName);
+  }
+
+  public boolean hasValidIntakePoseEstimate() {
+    return hasValidPoseEstimateForName(Intake_LL);
+  }
+
+  public boolean hasValidShooterPoseEstimate() {
+    return hasValidPoseEstimateForName(Shooter_LL);
   }
 
   /**
    * Get the number of AprilTags detected
    * @return Number of AprilTags in view
    */
-  public int getTargetCount() {
-    return (int) LimelightHelpers.getTargetCount(LL_NAME);
+  public int getTargetCountForName(String limelightName) {
+    return (int) LimelightHelpers.getTargetCount(limelightName);
   }
+  public int getIntakeTargetCount() {
+    return getTargetCountForName(Intake_LL);
+  }
+  public int getShooterTargetCount() {
+    return getTargetCountForName(Shooter_LL);
+  }
+
+  
 
   /**
    * Get the average distance to detected AprilTags
    * @return Distance in meters
    */
-  public double getAverageTagDistance() {
-    PoseEstimate estimate = getPoseEstimate();
-    return estimate != null ? estimate.avgTagDist : 0;
-  }
-
-  /**
-   * Set the vision measurement standard deviations
-   * Adjust these based on your Limelight's accuracy
-   * @param xStdDev X position standard deviation in meters
-   * @param yStdDev Y position standard deviation in meters
-   * @param thetaStdDev Rotation standard deviation in radians
-   */
-  public void setVisionStandardDeviations(double xStdDev, double yStdDev, double thetaStdDev) {
-    visionStandardDeviations = VecBuilder.fill(xStdDev, yStdDev, thetaStdDev);
-  }
-
-  /**
-   * Get the vision measurement standard deviations
-   * @return Matrix of standard deviations [x, y, theta]
-   */
-  public Matrix<N3, N1> getVisionStandardDeviations() {
-    return visionStandardDeviations;
-  }
-
-  /**
-   * Update vision standard deviations based on number of visible targets and average distance
-   * More targets = higher confidence in the measurement
-   * Closer targets = higher confidence
-   */
-  public void updateStdDevsBasedOnTargets() {
-    int targetCount = getTargetCount();
-    double avgDist = getAverageTagDistance();
-    
-    // Base standard deviations
-    double xStdDev = 0.9;
-    double yStdDev = 0.9;
-    double thetaStdDev = 9999;  // VERY HIGH = essentially ignore rotation from Limelight
-    
-    // Improve with more targets
-    if (targetCount >= 2) {
-      xStdDev = 0.5;
-      yStdDev = 0.5;
-      thetaStdDev = 9999;  // Still ignore rotation regardless of target count
-    } else if (targetCount == 1) {
-      xStdDev = 0.7;
-      yStdDev = 0.7;
-      thetaStdDev = 9999;  // Still ignore rotation
-    }
-    
-    // Penalize if too far away (> 4 meters)
-    if (avgDist > 3) {
-      xStdDev *= 9999;
-      yStdDev *= 9999;
-      // Don't penalize rotation since we're already ignoring it
-    }
-    
-    setVisionStandardDeviations(xStdDev, yStdDev, thetaStdDev);
-  }
-
-  public double getDistanceToHub(){
-    //red side: 2, 3, 4, 5, 8, 9, 10, 11
-    if (LimelightHelpers.getFiducialID(LL_NAME) == 2
-    || LimelightHelpers.getFiducialID(LL_NAME) == 3
-    || LimelightHelpers.getFiducialID(LL_NAME) == 4
-    || LimelightHelpers.getFiducialID(LL_NAME) == 5
-    || LimelightHelpers.getFiducialID(LL_NAME) == 8
-    || LimelightHelpers.getFiducialID(LL_NAME) == 9
-    || LimelightHelpers.getFiducialID(LL_NAME) == 10
-    || LimelightHelpers.getFiducialID(LL_NAME) == 11
-
-    //blue side: 18, 19, 20, 21, 24, 25, 26, 27
-    || LimelightHelpers.getFiducialID(LL_NAME) == 18
-    || LimelightHelpers.getFiducialID(LL_NAME) == 19
-    || LimelightHelpers.getFiducialID(LL_NAME) == 20
-    || LimelightHelpers.getFiducialID(LL_NAME) == 21
-    || LimelightHelpers.getFiducialID(LL_NAME) == 24
-    || LimelightHelpers.getFiducialID(LL_NAME) == 25
-    || LimelightHelpers.getFiducialID(LL_NAME) == 26
-    || LimelightHelpers.getFiducialID(LL_NAME) == 27){
-      Rotation2d angleToGoal = Rotation2d.fromDegrees(TunerConstants.LLMountAngle)
-      .plus(Rotation2d.fromDegrees(LimelightHelpers.getTY(LL_NAME)));
-
-      double distanceToHub = (TunerConstants.ApriltagHeight - TunerConstants.LLHight) / angleToGoal.getTan();
-
-      return distanceToHub;
-    }
-    else{
-      return 0;
-    }
-  }
 
   @Override
   public void periodic() {
-    // Update standard deviations based on target count and distance
-    updateStdDevsBasedOnTargets();
-    
-    // Dashboard data
-    SmartDashboard.putBoolean("LL/Has Valid Pose", hasValidPoseEstimate());
-    SmartDashboard.putNumber("LL/Target Count", getTargetCount());
-    SmartDashboard.putNumber("LL/Avg Tag Distance", getAverageTagDistance());
-    
-    if (hasValidPoseEstimate()) {
-      PoseEstimate estimate = getPoseEstimate();
-      if (estimate != null) {
-        Pose2d pose = estimate.pose;
-        SmartDashboard.putNumber("LL/Robot X", pose.getX());
-        SmartDashboard.putNumber("LL/Robot Y", pose.getY());
-        SmartDashboard.putNumber("LL/Robot Rotation", pose.getRotation().getDegrees());
-      }
+    SmartDashboard.putBoolean("Intake_LL Has Valid Pose", hasValidIntakePoseEstimate());
+    SmartDashboard.putBoolean("Shooter_LL Has Valid Pose", hasValidShooterPoseEstimate());
+  }
+
+    /**
+   * Return a hub pose that is mirrored for the current alliance. Provide the
+   * hub pose defined for the BLUE alliance; this method will return the
+   * equivalent pose for the RED alliance by reflecting across the field center.
+   *
+   * @param hubPoseBlue known Pose2d of the hub for the BLUE alliance coordinate frame
+   * @return Pose2d adjusted for the current alliance
+   */
+  public Pose2d getHubPoseForAlliance() {
+  var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
+    if (alliance == DriverStation.Alliance.Red) { 
+      return TunerConstants.kHubPoseRed;
     }
+    // Blue alliance:
+    return TunerConstants.kHubPoseBlue;
+  }
+
+  /**
+   * Compute the planar distance between the robot and the hub using field poses.
+   * If robotPose is null, this method will attempt to use the Limelight's latest
+   * field-relative pose estimate. Returns Double.NaN if no robot pose is available.
+   *
+   * @param robotPose The robot's field-relative Pose2d (may be null to use Limelight estimate)
+   * @param hubPose The hub's known field-relative Pose2d
+   * @return distance in meters, or Double.NaN when unavailable
+   */
+  public double getDistanceToHub(Pose2d robotPose, Pose2d hubPose) {
+    Pose2d rp = null;
+    if (robotPose != null) {
+      rp = robotPose;
+    } 
+    // else {
+    //   // Prefer intake Limelight estimate, fall back to shooter if intake not available
+    //   PoseEstimate est = getPoseEstimateForName(Intake_LL);
+    //   if (est == null) {
+    //     est = getPoseEstimateForName(Shooter_LL);
+    //   }
+    //   if (est != null) {
+    //     rp = est.pose;
+    //   }
+    // }
+    if (rp == null || hubPose == null) {
+      return Double.NaN;
+    }
+
+    return rp.getTranslation().getDistance(hubPose.getTranslation());
+  }
+  public double getRotationToHub(Pose2d robotPose, Pose2d hubPose) {
+    Pose2d rp = null;
+    if (robotPose != null) {
+      rp = robotPose;
+    } 
+    if (rp == null || hubPose == null) {
+      return Double.NaN;
+    }
+
+    Rotation2d toHub = new Rotation2d(hubPose.getX() - rp.getX(), hubPose.getY() - rp.getY());
+    return toHub.minus(rp.getRotation()).getDegrees();
   }
 }
