@@ -90,6 +90,9 @@ public class ShooterMotor extends SubsystemBase{
     public double getMotorSpeed(){
         return ShooterMotor.getVelocity().getValueAsDouble();
     }
+    public boolean ShooterAtSetpoint(double setpoint, double tolerance){
+        return Math.abs(getMotorSpeed() - setpoint) <= tolerance;
+    }
 
     private final SysIdRoutine m_sysIdRoutine = new SysIdRoutine(
         new SysIdRoutine.Config(

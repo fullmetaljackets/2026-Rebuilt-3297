@@ -15,7 +15,9 @@ import frc.robot.subsystems.ShooterMotor;
 
 public class AimAtHub extends Command {
     private final Limelight m_limelight;
-    private final double kp_Angle = 0.08;
+    private final double kp_Angle = 0.17;
+    // private final double kp_Angle_Small = 0.2;
+
     private final SwerveRequest.RobotCentric m_alignRequest;
     private final CommandSwerveDrivetrain drivetrain;
     // private final double kp_Strafe = 2;
@@ -26,7 +28,7 @@ public class AimAtHub extends Command {
         this.drivetrain = drivetrain;
         m_alignRequest = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
-        addRequirements(limelight, drivetrain);
+        addRequirements(drivetrain);
     }
 
     @Override
@@ -52,12 +54,27 @@ public class AimAtHub extends Command {
         ));
         SmartDashboard.putNumber("Rotation To Hub (deg)", rotationToHub);
         double robotRot = drivetrain.getState().Pose.getRotation().getDegrees() + 180;
-        if (robotRot > 180)
-        robotRot = robotRot - 360;
+        if (robotRot > 180){
+            robotRot = robotRot - 360;
+        }
         SmartDashboard.putNumber("Robot Rotation (deg)", robotRot);
         double angleError = rotationToHub - robotRot;
         SmartDashboard.putNumber("Angle Error (deg)", angleError);
+        // double kp_Angle = 0.12;
+        // if (angleError < 6 && angleError > 0) {
+        //     // kp_Angle = 1.5;
+        // }
+        // if (angleError > -6 && angleError < 0) {
+        //     kp_Angle = 1.5;
+        // }
+
         double rotationalRate = kp_Angle * angleError;
+        if (rotationalRate > 4){
+            rotationalRate = 4;
+        }
+        if (rotationalRate < -4){
+            rotationalRate = -4;
+        }
         SmartDashboard.putNumber("Rotation Rate",rotationalRate);
 
         drivetrain.setControl(

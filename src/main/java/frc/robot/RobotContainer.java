@@ -107,7 +107,7 @@ public class RobotContainer {
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
 
-        DriveStick.x().whileTrue(drivetrain.applyRequest(() -> brake));
+        // DriveStick.x().whileTrue(drivetrain.applyRequest(() -> brake));
         // DriveStick.b().whileTrue(drivetrain.applyRequest(() ->
         //     point.withModuleDirection(new Rotation2d(-DriveStick.getLeftY(), -DriveStick.getLeftX()))
         // ));
@@ -127,10 +127,10 @@ public class RobotContainer {
         // CopilotStick.a().whileTrue(new ShooterRun(53, 1000, s_ShooterMotor));
         // CopilotStick.leftTrigger().whileTrue(new ShooterRun(52, 1000, s_ShooterMotor)); //6ft back agiants tower
         // CopilotStick.leftTrigger().whileTrue(new ShooterRun(100, 1000, s_ShooterMotor)); //9ft back agianst allience wall
-        CopilotStick.leftTrigger().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
+        CopilotStick.leftBumper().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
         // CopilotStick.leftTrigger().whileTrue(new ShooterRun(37.8, 1000, s_ShooterMotor));
 
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(34.5, 1000, s_ShooterMotor)); // agaisnt hub
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(42, 1000, s_ShooterMotor)); // agaisnt hub
 
 
         // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
@@ -140,6 +140,7 @@ public class RobotContainer {
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
+
         //Winch
         CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
         CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
@@ -147,7 +148,7 @@ public class RobotContainer {
         CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));
 
         //limelight
-        DriveStick.a().whileTrue(new AimAtHub(limelight, drivetrain));
+        DriveStick.x().whileTrue(new AimAtHub(limelight, drivetrain));
 
         //manuel controlls shooter
         DriveStick.leftTrigger().and(DriveStick.povUp()).whileTrue(new ShooterRun(90, 1000, s_ShooterMotor));
@@ -155,7 +156,7 @@ public class RobotContainer {
         //manuel controlls feeder
         DriveStick.leftTrigger().and(DriveStick.povRight()).whileTrue(new FeederRunPercentage(1, s_FeederMotor));
         DriveStick.leftTrigger().and(DriveStick.povLeft()).whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
-        CopilotStick.leftBumper().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
+        CopilotStick.x().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
         //manuel controlls Intake
         DriveStick.rightTrigger().and(DriveStick.povUp()).whileTrue(new IntakeRunFast(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.rightTrigger().and(DriveStick.povDown()).whileTrue(new IntakeRunFastReverse(s_IntakeMotor, s_BackIntakeMotor));
