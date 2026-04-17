@@ -1,24 +1,27 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
+import static edu.wpi.first.units.Units.MetersPerSecond;
 
-import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
+import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Pose2d;
-import frc.robot.LimelightHelpers;
-import frc.robot.LimelightHelpers.PoseEstimate;
-import frc.robot.subsystems.Limelight;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.ShooterMotor;
+import frc.robot.subsystems.Limelight;
 
 public class AimAtHub extends Command {
     private final Limelight m_limelight;
     private final double kp_Angle = 0.17;
+    private double MaxSpeed = 2; // kSpeedAt12Volts desired top speed
+    private final CommandXboxController DriveStick = new CommandXboxController(0);
+
     // private final double kp_Angle_Small = 0.2;
 
-    private final SwerveRequest.RobotCentric m_alignRequest;
+    private final SwerveRequest.FieldCentric m_alignRequest;
     private final CommandSwerveDrivetrain drivetrain;
     // private final double kp_Strafe = 2;
     // private final double kp_Angle = 1.7;
@@ -26,8 +29,9 @@ public class AimAtHub extends Command {
     public AimAtHub(Limelight limelight, CommandSwerveDrivetrain drivetrain) {
         m_limelight = limelight;
         this.drivetrain = drivetrain;
-        m_alignRequest = new SwerveRequest.RobotCentric()
+        m_alignRequest = new SwerveRequest.FieldCentric()
             .withDriveRequestType(DriveRequestType.Velocity);
+        // Don't require drivetrain - this allows manual driving while aiming
         addRequirements(drivetrain);
     }
 
@@ -77,10 +81,16 @@ public class AimAtHub extends Command {
         }
         SmartDashboard.putNumber("Rotation Rate",rotationalRate);
 
+        // Get manual driving input (from your joystick/controller)
+        // You'll need to modify this to get actual input values
+        // For now, this just aims the rotation while allowing manual X/Y input
+        double manualVelocityX = -DriveStick.getLeftY();  // Replace with actual joystick X input
+        double manualVelocityY = -DriveStick.getLeftX();  // Replace with actual joystick Y input
+
         drivetrain.setControl(
-        m_alignRequest.withVelocityX(0) // Drive forward with negative Y (forward)
-            .withVelocityY(0) // Drive left with negative X (left)
-            .withRotationalRate(rotationalRate) // Drive counterclockwise with negative X (left)
+        m_alignRequest.withVelocityX(manualVelocityX * MaxSpeed) // Manual forward/backward
+            .withVelocityY(manualVelocityY * MaxSpeed) // Manual left/right
+            .withRotationalRate(rotationalRate) // Auto-aimed rotation
         );
 
     }

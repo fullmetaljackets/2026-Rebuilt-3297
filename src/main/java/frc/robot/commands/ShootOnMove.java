@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.math.geometry.Pose2d;
 import frc.robot.LimelightHelpers;
 import frc.robot.LimelightHelpers.PoseEstimate;
@@ -13,6 +14,7 @@ public class ShootOnMove extends Command {
     private final Limelight m_limelight;
     private final ShooterMotor s_ShooterMotor;
     private final CommandSwerveDrivetrain drivetrain;
+
     // private final double kp_Strafe = 2;
     // private final double kp_Angle = 1.7;
     
