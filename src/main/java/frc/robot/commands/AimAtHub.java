@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Limelight;
@@ -52,6 +53,12 @@ public class AimAtHub extends Command {
         double distanceToHub = m_limelight.getDistanceToHub(robotPose, hubpose);
         SmartDashboard.putNumber("Distance to Hub", distanceToHub);
 
+    // --- Predictive rotation compensation ---
+    // Estimated projectile speed in meters per second (tune this)
+    final double NOMINAL_PROJECTILE_SPEED_MPS = 8.0;
+    double estimatedTOF = Math.max(0.001, distanceToHub / NOMINAL_PROJECTILE_SPEED_MPS);
+    SmartDashboard.putNumber("Estimated TOF (s)", estimatedTOF);
+
         double rotationToHub = Math.toDegrees(Math.atan2(
             hubpose.getY() - robotPose.getY(),
             hubpose.getX() - robotPose.getX()
@@ -72,7 +79,39 @@ public class AimAtHub extends Command {
         //     kp_Angle = 1.5;
         // }
 
-        double rotationalRate = kp_Angle * angleError;
+        // Use drivetrain translation to predict where the robot will be when the ball arrives
+        ChassisSpeeds speeds = drivetrain.getState().Speeds;
+        double vx = speeds.vxMetersPerSecond; // robot-forward
+        double vy = speeds.vyMetersPerSecond; // robot-left
+
+        // Convert robot-relative velocities to field frame using robot yaw
+        double cos = robotPose.getRotation().getCos();
+        double sin = robotPose.getRotation().getSin();
+        double fieldVx = vx * cos - vy * sin; // field x
+        double fieldVy = vx * sin + vy * cos; // field y
+        SmartDashboard.putNumber("Field Vx (m/s)", fieldVx);
+        SmartDashboard.putNumber("Field Vy (m/s)", fieldVy);
+
+        double deltaX = fieldVx * estimatedTOF;
+        double deltaY = fieldVy * estimatedTOF;
+        SmartDashboard.putNumber("Predicted deltaX (m)", deltaX);
+        SmartDashboard.putNumber("Predicted deltaY (m)", deltaY);
+
+        // Compute future angle to hub from predicted future robot position
+        double futureRotationToHub = Math.toDegrees(Math.atan2(
+            hubpose.getY() - (robotPose.getY() + deltaY),
+            hubpose.getX() - (robotPose.getX() + deltaX)
+        ));
+        SmartDashboard.putNumber("Future Rotation To Hub (deg)", futureRotationToHub);
+
+        // Compute future angle error (where to aim now so we're aligned at impact)
+        double futureAngleError = futureRotationToHub - robotRot;
+        // Normalize to [-180, 180]
+        while (futureAngleError > 180) futureAngleError -= 360;
+        while (futureAngleError < -180) futureAngleError += 360;
+        SmartDashboard.putNumber("Future Angle Error (deg)", futureAngleError);
+
+        double rotationalRate = kp_Angle * futureAngleError;
         if (rotationalRate > 4){
             rotationalRate = 4;
         }
