@@ -66,17 +66,20 @@ public class RobotContainer {
     private final IntakeMotor s_IntakeMotor = new IntakeMotor();
     private final BackIntakeMotor s_BackIntakeMotor = new BackIntakeMotor();
     private final WinchMotor s_WinchMotor = new WinchMotor();
-    private final Limelight limelight = new Limelight();
+    private final Limelight limelight = new Limelight(drivetrain);
     private final SendableChooser<Command> autoChooser;
 
 
     public RobotContainer() {
         NamedCommands.registerCommand("IntakeRun", new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
-        NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(43, 1000, s_ShooterMotor));
-        NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor));
+        // NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(34.5, 1000, s_ShooterMotor));
+        NamedCommands.registerCommand("ShooterWarmup", new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
+        NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain));
+        NamedCommands.registerCommand("ShootTimeout", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain).withTimeout(6));
         NamedCommands.registerCommand("IntakeUp", new WinchRun(-0.2, s_WinchMotor));
         NamedCommands.registerCommand("IntakeHold", new WinchToSetpoint(0.1, -9.23, s_WinchMotor));
         NamedCommands.registerCommand("IntakeDown", new WinchToSetpoint(0.1, -1, s_WinchMotor));
+        NamedCommands.registerCommand("AimAtHub", new AimAtHub(limelight, drivetrain).withTimeout(.5));
 
         // NamedCommands.registerCommand("WinchRun", new WinchRun(-0.15, s_WinchMotor));
 
@@ -130,22 +133,28 @@ public class RobotContainer {
         CopilotStick.leftBumper().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
         // CopilotStick.leftTrigger().whileTrue(new ShooterRun(37.8, 1000, s_ShooterMotor));
 
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(42, 1000, s_ShooterMotor)); // agaisnt hub
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(34.5, 1000, s_ShooterMotor)); // agaisnt hub
 
 
         // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
         // DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)); // 6ft back against tower and at hub
-        DriveStick.rightBumper().whileTrue(new FeederRun(15, 1000, s_FeederMotor, s_ShooterMotor)); // 9ft back against tower Allience wall
+        DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)); // 9ft back against tower Allience wall
 
         //Intake
         DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
 
         //Winch
-        CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
-        CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
-        CopilotStick.povDown().onFalse(new WinchHold(0.1, s_WinchMotor));
-        CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));
+        // CopilotStick.povDown().whileTrue(new WinchRun(0.15, s_WinchMotor));
+        // CopilotStick.povUp().whileTrue(new WinchRun(-0.2, s_WinchMotor));
+        // CopilotStick.povDown().onFalse(new WinchHold(0.1, s_WinchMotor));
+        // CopilotStick.povUp().onFalse(new WinchHold(0.1, s_WinchMotor));
+
+        CopilotStick.a().whileTrue(new WinchRun(0.15, s_WinchMotor));
+        CopilotStick.y().whileTrue(new WinchRun(-0.2, s_WinchMotor));
+        CopilotStick.a().onFalse(new WinchHold(0.1, s_WinchMotor));
+        CopilotStick.y().onFalse(new WinchHold(0.1, s_WinchMotor));
+
 
         //limelight
         DriveStick.x().whileTrue(new AimAtHub(limelight, drivetrain));

@@ -97,5 +97,11 @@ public class AimAtHub extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        drivetrain.setControl(
+        m_alignRequest.withVelocityX(0) // Manual forward/backward
+            .withVelocityY(0) // Manual left/right
+            .withRotationalRate(0) // Auto-aimed rotation
+        );
+
     }
 }

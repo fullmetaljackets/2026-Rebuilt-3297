@@ -82,7 +82,7 @@ public class ShootOnMove extends Command {
         }
         if (distance <= 3.1) {
             // Linear interpolation from 2.1m to 3.1m: 43 RPM → 52.0 RPM
-            return 43 + (52.0 - 43) * ((distance - 2.6) / (3.1 - 2.6));
+            return 42 + (52.0 - 43) * ((distance - 2.6) / (3.1 - 2.6));
             
         }
         if (distance <= 3.6) {

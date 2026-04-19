@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.LimelightHelpers.PoseEstimate;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.CommandSwerveDrivetrain;
 
 public class Limelight extends SubsystemBase {
 
   private static final String Intake_LL = "limelight-one";
   private static final String Shooter_LL = "limelight-two";
+  private final CommandSwerveDrivetrain drivetrain;
 
   
   // Standard deviations for vision measurements
@@ -24,7 +26,10 @@ public class Limelight extends SubsystemBase {
   private Matrix<N3, N1> visionStandardDeviations = 
     VecBuilder.fill(0.7, 0.7, 9999);  // X, Y, and rotation std devs
 
-  public Limelight() {
+  public Limelight(CommandSwerveDrivetrain drivetrain) {
+    // Store reference to drivetrain for accessing robot rotation
+    this.drivetrain = drivetrain;
+    
     // Configure Limelight with your camera mount position
     // Adjust these values to match your camera's physical placement on the robot
     LimelightHelpers.setCameraPose_RobotSpace(Intake_LL, 0.0508, 0.0508, 0.7493, 0, 21, 180);
@@ -37,10 +42,19 @@ public class Limelight extends SubsystemBase {
    */
 
   /**
-   * Get a PoseEstimate for a specific Limelight camera name (returns null if invalid)
+   * Get a PoseEstimate for a specific Limelight camera name using MegaTag2
+   * This feeds the drivetrain's current rotation to improve pose estimation
    */
   public PoseEstimate getPoseEstimateForName(String limelightName) {
-    PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiBlue(limelightName);
+    // Get current robot rotation from drivetrain
+    double robotRotationDeg = drivetrain.getState().Pose.getRotation().getDegrees();
+    
+    // Tell Limelight the robot's current orientation for better MegaTag2 estimation
+    LimelightHelpers.SetRobotOrientation(limelightName, robotRotationDeg, 0, 0, 0, 0, 0);
+    
+    // Get MegaTag2 pose estimate with robot orientation info
+    PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(limelightName);
+    
     if (estimate != null && estimate.tagCount > 0) {
       return estimate;
     }
@@ -79,13 +93,68 @@ public class Limelight extends SubsystemBase {
       thetaStdDev = 9999;
     }
 
-    if (avgDist > 3) {
-      xStdDev *= 9999;
-      yStdDev *= 9999;
-    }
+    // if (avgDist > 3) {
+    //   xStdDev *= 9999;
+    //   yStdDev *= 9999;
+    // }
 
     return VecBuilder.fill(xStdDev, yStdDev, thetaStdDev);
   }
+
+    // public Matrix<N3, N1> computeStdDevsForIntake_LL(String limelightName) {
+  //   PoseEstimate est = getPoseEstimateForName(limelightName);
+  //   int targetCount = est != null ? est.tagCount : 0;
+  //   double avgDist = est != null ? est.avgTagDist : 0;
+
+  //   double xStdDev = 0.9;
+  //   double yStdDev = 0.9;
+  //   double thetaStdDev = 9999; // VERY HIGH = ignore rotation
+
+  //   if (targetCount >= 2) {
+  //     xStdDev = 0.7;
+  //     yStdDev = 0.7;
+  //     thetaStdDev = 9999;
+  //   } else if (targetCount == 1) {
+  //     xStdDev = 0.9;
+  //     yStdDev = 0.9;
+  //     thetaStdDev = 9999;
+  //   }
+
+  //   if (avgDist > 3) {
+  //     xStdDev *= 9999;
+  //     yStdDev *= 9999;
+  //   }
+
+  //   return VecBuilder.fill(xStdDev, yStdDev, thetaStdDev);
+  // }
+
+  //   public Matrix<N3, N1> computeStdDevsForShooter_LL(String limelightName) {
+  //   PoseEstimate est = getPoseEstimateForName(limelightName);
+  //   int targetCount = est != null ? est.tagCount : 0;
+  //   double avgDist = est != null ? est.avgTagDist : 0;
+
+  //   double xStdDev = 0.9;
+  //   double yStdDev = 0.9;
+  //   double thetaStdDev = 9999; // VERY HIGH = ignore rotation
+
+  //   if (targetCount >= 2) {
+  //     xStdDev = 0.7;
+  //     yStdDev = 0.7;
+  //     thetaStdDev = 9999;
+  //   } else if (targetCount == 1) {
+  //     xStdDev = 9999;
+  //     yStdDev = 9999;
+  //     thetaStdDev = 9999;
+  //   }
+
+  //   if (avgDist > 3) {
+  //     xStdDev *= 9999;
+  //     yStdDev *= 9999;
+  //   }
+
+  //   return VecBuilder.fill(xStdDev, yStdDev, thetaStdDev);
+  // }
+
 
   public Matrix<N3, N1> getVisionStdDevsForIntake() {
     return computeStdDevsForName(Intake_LL);

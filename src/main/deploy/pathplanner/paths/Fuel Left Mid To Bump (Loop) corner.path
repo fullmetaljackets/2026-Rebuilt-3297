@@ -8,54 +8,56 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.323113636363636,
-        "y": 5.6283295454545454
+        "x": 6.184688888888888,
+        "y": 5.535644444444444
       },
       "isLocked": false,
       "linkedName": "Fuel Left Sweep Mid End New"
     },
     {
       "anchor": {
-        "x": 5.291329545454545,
-        "y": 5.65
+        "x": 3.2418666666666667,
+        "y": 5.301777777777777
       },
       "prevControl": {
-        "x": 5.6623885449692715,
-        "y": 5.65
-      },
-      "nextControl": {
-        "x": 4.940883385572261,
-        "y": 5.65
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.199045454545454,
-        "y": 5.65
-      },
-      "prevControl": {
-        "x": 3.9201343434343436,
-        "y": 5.634855178907721
+        "x": 3.037233333333333,
+        "y": 5.779255555555555
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel To Left Bump"
+      "linkedName": "Left Corner"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.8649425287356327,
+      "waypointRelativePos": 0.39253112033194915,
+      "rotationDegrees": 160.0
+    },
+    {
+      "waypointRelativePos": 0.653112033195017,
       "rotationDegrees": 160.0
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7473945409429293,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 0.75,
+        "maxAcceleration": 0.75,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "ShooterWarmup",
-      "waypointRelativePos": 1.399503722084362,
+      "waypointRelativePos": 0.491315136476428,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
@@ -75,7 +77,7 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": 150.0
+    "rotation": 135.80692945510242
   },
   "reversed": false,
   "folder": "Bump",
