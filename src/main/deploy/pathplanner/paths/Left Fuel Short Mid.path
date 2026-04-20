@@ -8,46 +8,62 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.7621892655367235,
-        "y": 5.398236838726246
+        "x": 5.892355555555555,
+        "y": 5.360244444444445
       },
       "isLocked": false,
       "linkedName": "Fuel Left Short Sweep Start"
     },
     {
       "anchor": {
-        "x": 5.775,
-        "y": 4.292670454545455
+        "x": 5.950822222222223,
+        "y": 4.6878777777777785
       },
       "prevControl": {
-        "x": 5.775,
-        "y": 4.775191065414533
+        "x": 5.950822222222223,
+        "y": 5.1703983886468565
       },
       "nextControl": {
-        "x": 5.775,
-        "y": 3.8101498436763768
+        "x": 5.950822222222223,
+        "y": 4.2053571669087
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.311704545454545,
-        "y": 2.45
+        "x": 7.363766666666668,
+        "y": 5.59411111111111
       },
       "prevControl": {
-        "x": 5.878818181818182,
-        "y": 2.8828863636363637
+        "x": 8.542844444444444,
+        "y": 4.103211111111111
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Fuel Left Short Sweep End"
+      "linkedName": "Left Fuel Short Mid"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.3679245283018846,
+      "waypointRelativePos": 0.7053941908713751,
       "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 1.2464730290456418,
+      "rotationDegrees": 175.1541053123301
+    },
+    {
+      "waypointRelativePos": 1.5020746887966818,
+      "rotationDegrees": -175.92065773542902
+    },
+    {
+      "waypointRelativePos": 1.6049792531120413,
+      "rotationDegrees": -122.68667280188193
+    },
+    {
+      "waypointRelativePos": 1.8439834024896298,
+      "rotationDegrees": -64.58209716927114
     }
   ],
   "constraintZones": [],
@@ -75,7 +91,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 135.74405920288862
+    "rotation": -90.53545898556453
   },
   "reversed": false,
   "folder": "Fuel",

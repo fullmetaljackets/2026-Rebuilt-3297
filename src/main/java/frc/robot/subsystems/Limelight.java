@@ -225,6 +225,17 @@ public class Limelight extends SubsystemBase {
     return TunerConstants.kHubPoseBlue;
   }
 
+  public double getShuttlePoseForAlliance() {
+  var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
+    if (alliance == DriverStation.Alliance.Red) { 
+      return TunerConstants.kShuttleXRed;
+    }
+    // Blue alliance:
+    return TunerConstants.kShuttleXBlue;
+  }
+
+
+
   /**
    * Compute the planar distance between the robot and the hub using field poses.
    * If robotPose is null, this method will attempt to use the Limelight's latest
@@ -238,23 +249,26 @@ public class Limelight extends SubsystemBase {
     Pose2d rp = null;
     if (robotPose != null) {
       rp = robotPose;
-    } 
-    // else {
-    //   // Prefer intake Limelight estimate, fall back to shooter if intake not available
-    //   PoseEstimate est = getPoseEstimateForName(Intake_LL);
-    //   if (est == null) {
-    //     est = getPoseEstimateForName(Shooter_LL);
-    //   }
-    //   if (est != null) {
-    //     rp = est.pose;
-    //   }
-    // }
+    }
     if (rp == null || hubPose == null) {
       return Double.NaN;
     }
 
     return rp.getTranslation().getDistance(hubPose.getTranslation());
   }
+
+  public double getDistanceToShuttle(Pose2d robotPose, double ShuttleX) {
+    Pose2d rp = null;
+    if (robotPose != null) {
+      rp = robotPose;
+    }
+    if (rp == null || ShuttleX == Double.NaN) {
+      return Double.NaN;
+    }
+
+    return Math.abs(robotPose.getX() - ShuttleX);
+  }
+
   public double getRotationToHub(Pose2d robotPose, Pose2d hubPose) {
     Pose2d rp = null;
     if (robotPose != null) {

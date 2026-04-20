@@ -38,12 +38,14 @@ public class TunerConstants {
         4.034536, // y cordinate of blue hub
         null // don't need a rotation for the hub
     );
-        public static final Pose2d kHubPoseRed = new Pose2d(
+
+    public static final Pose2d kHubPoseRed = new Pose2d(
         11.915394, // x cordinate of Red hub
         4.034536, // y cordinate of Red hub
         null // don't need a rotation for the hub
     );
-
+    public static final double kShuttleXBlue = 3; // x coordinate of shuttle
+    public static final double kShuttleXRed = 13.5; // x coordinate of shuttle
     // Both sets of gains need to be tuned to your individual robot.
 
     // The steer motor uses any SwerveModule.SteerRequestType control request with the

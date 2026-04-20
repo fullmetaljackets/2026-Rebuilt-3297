@@ -1,0 +1,59 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.363766666666668,
+        "y": 5.59411111111111
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.009955555555556,
+        "y": 5.584366666666665
+      },
+      "isLocked": false,
+      "linkedName": "Left Fuel Short Mid"
+    },
+    {
+      "anchor": {
+        "x": 3.199045454545454,
+        "y": 5.65
+      },
+      "prevControl": {
+        "x": 3.71550101010101,
+        "y": 5.650000000000001
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Fuel To Left Bump"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.15684647302904545,
+      "rotationDegrees": 160.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 1.0,
+    "rotation": 150.0
+  },
+  "reversed": false,
+  "folder": "Bump",
+  "idealStartingState": {
+    "velocity": 0.0,
+    "rotation": -90.53545898556453
+  },
+  "useDefaultConstraints": true
+}

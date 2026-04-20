@@ -25,19 +25,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left Fuel Short"
+            "pathName": "Left Fuel Short Mid"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Right to Bump Short"
+            "pathName": "Fuel Left to Bump Short Mid"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Right"
+            "pathName": "Bump to Shoot Left"
           }
         },
         {
