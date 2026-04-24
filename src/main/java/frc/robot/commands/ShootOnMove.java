@@ -67,21 +67,21 @@ public class ShootOnMove extends Command {
     private double calculateShooterSpeed(double distanceToHub, double distanceToShuttle) {
         var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
         Pose2d robotPose = drivetrain.getState().Pose;
-        double distance = 0;
+        double distance = distanceToHub;
 
-        if (alliance == DriverStation.Alliance.Blue) { 
-            if (robotPose.getX() < 4.6) {
-                distance = distanceToHub;
-            }else if (robotPose.getX() >= 4.6) {
-                distance = distanceToShuttle;
-            }
-        }else{
-            if (robotPose.getX() > 11.9) {
-                distance = distanceToHub;
-            }else if (robotPose.getX() <= 11.9) {
-                distance = distanceToShuttle;
-            }
-        }
+        // if (alliance == DriverStation.Alliance.Blue) { 
+        //     if (robotPose.getX() < 4.6) {
+        //         distance = distanceToHub;
+        //     }else if (robotPose.getX() >= 4.6) {
+        //         distance = distanceToShuttle;
+        //     }
+        // }else{
+        //     if (robotPose.getX() > 11.9) {
+        //         distance = distanceToHub;
+        //     }else if (robotPose.getX() <= 11.9) {
+        //         distance = distanceToShuttle;
+        //     }
+        // }
         if (distance < 0) {
             return 0;
         }
@@ -91,58 +91,23 @@ public class ShootOnMove extends Command {
         }
         if (distance <= 2.1) {
             // Linear interpolation from 1.7m to 2.1m: 34.5 RPM → 37.8 RPM
-            return 34.5 + (37.8 - 34.5) * ((distance - 1.4) / (2.1 - 1.4));
+            return 35 + (38.2 - 34.5) * ((distance - 1.4) / (2.1 - 1.4));
         }
         if (distance <= 2.6) {
             // Linear interpolation from 1.7m to 2.1m: 34.5 RPM → 43 RPM
-            return 37.8 + (43 - 37.8) * ((distance - 2.1) / (2.6 - 2.1));
+            return 40 + (43.5 - 38.2) * ((distance - 2.1) / (2.6 - 2.1));
         }
         if (distance <= 3.1) {
-            // Linear interpolation from 2.1m to 3.1m: 43 RPM → 52.0 RPM
-            return 42 + (52.0 - 43) * ((distance - 2.6) / (3.1 - 2.6));
+            // Linear interpolation from 2.1m to 3.1m: 43.5 RPM → 52.0 RPM
+            return 43.5 + (52.0 - 43.5) * ((distance - 2.6) / (3.1 - 2.6));
             
         }
         if (distance <= 3.6) {
-            // Linear interpolation from 3.1m to 3.6m: 52.0 RPM → 100.0 RPM
-            return 52.0 + (100.0 - 52.0) * ((distance - 3.1) / (3.6 - 3.1));
+            // Linear interpolation from 3.1m to 3.6m: 55 RPM → 100.0 RPM
+            return 55 + (100.0 - 55) * ((distance - 3.1) / (3.6 - 3.1));
         }
         // Beyond 3.6m, use max speed
         return 100.0;
-        //     } else {
-                
-        //     }
-        // } else {
-        //     if (robotPose.getX() > 11.9) {
-        //         if (distanceToHub < 0) {
-        //             return 0;
-        //         }
-        //         if (distanceToHub <= 1.4) {
-        //             // Linear interpolation from 0m to 1.4m: 0 RPM → 34.5 RPM
-        //             return 34.5;
-        //         }
-        //         if (distanceToHub <= 2.1) {
-        //             // Linear interpolation from 1.7m to 2.1m: 34.5 RPM → 37.8 RPM
-        //             return 34.5 + (37.8 - 34.5) * ((distanceToHub - 1.4) / (2.1 - 1.4));
-        //         }
-        //         if (distanceToHub <= 2.6) {
-        //             // Linear interpolation from 1.7m to 2.1m: 34.5 RPM → 43 RPM
-        //             return 37.8 + (43 - 37.8) * ((distanceToHub - 2.1) / (2.6 - 2.1));
-        //         }
-        //         if (distanceToHub <= 3.1) {
-        //             // Linear interpolation from 2.1m to 3.1m: 43 RPM → 52.0 RPM
-        //             return 42 + (52.0 - 43) * ((distanceToHub - 2.6) / (3.1 - 2.6));
-                    
-        //         }
-        //         if (distanceToHub <= 3.6) {
-        //             // Linear interpolation from 3.1m to 3.6m: 52.0 RPM → 100.0 RPM
-        //             return 52.0 + (100.0 - 52.0) * ((distanceToHub - 3.1) / (3.6 - 3.1));
-        //         }
-        //         // Beyond 3.6m, use max speed
-        //         return 100.0;
-        //     } else {
-                
-        //     }
-
     }
 
 

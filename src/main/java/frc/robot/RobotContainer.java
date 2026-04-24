@@ -25,15 +25,17 @@ import frc.robot.commands.AimAtHub;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
 import frc.robot.commands.GetDistToHub;
+import frc.robot.commands.IntakeRunPercentage;
+import frc.robot.commands.IntakeRunReverse;
 import frc.robot.commands.ShooterRun;
 import frc.robot.commands.WinchHold;
 import frc.robot.commands.WinchRun;
 import frc.robot.commands.WinchToSetpoint;
 import frc.robot.commands.ShootOnMove;
-import frc.robot.commands.grouped.IntakeRun;
-import frc.robot.commands.grouped.IntakeRunFast;
-import frc.robot.commands.grouped.IntakeRunFastReverse;
-import frc.robot.commands.grouped.IntakeRunReverse;
+// import frc.robot.commands.grouped.IntakeRun;
+// import frc.robot.commands.grouped.IntakeRunFast;
+// import frc.robot.commands.grouped.IntakeRunFastReverse;
+// import frc.robot.commands.grouped.IntakeRunReverse;
 import frc.robot.commands.grouped.Shoot3;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.BackIntakeMotor;
@@ -71,7 +73,7 @@ public class RobotContainer {
 
 
     public RobotContainer() {
-        NamedCommands.registerCommand("IntakeRun", new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
+        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor));
         // NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(34.5, 1000, s_ShooterMotor));
         NamedCommands.registerCommand("ShooterWarmup", new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
         NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain));
@@ -133,7 +135,8 @@ public class RobotContainer {
         CopilotStick.leftBumper().whileTrue(new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
         // CopilotStick.leftTrigger().whileTrue(new ShooterRun(37.8, 1000, s_ShooterMotor));
 
-        CopilotStick.rightBumper().whileTrue(new ShooterRun(34.5, 1000, s_ShooterMotor)); // agaisnt hub
+        CopilotStick.rightBumper().whileTrue(new ShooterRun(34.2, 1000, s_ShooterMotor)); // agaisnt hub
+        CopilotStick.rightTrigger().whileTrue(new ShooterRun(45, 1000, s_ShooterMotor ));
 
 
         // DriveStick.b().whileTrue(new FeederRun(10, 1000, s_FeederMotor, s_ShooterMotor));
@@ -141,7 +144,7 @@ public class RobotContainer {
         DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)); // 9ft back against tower Allience wall
 
         //Intake
-        DriveStick.leftBumper().whileTrue(new IntakeRun(s_IntakeMotor, s_BackIntakeMotor));
+        DriveStick.leftBumper().whileTrue(new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
 
         //Winch
@@ -167,8 +170,8 @@ public class RobotContainer {
         DriveStick.leftTrigger().and(DriveStick.povLeft()).whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
         CopilotStick.x().whileTrue(new FeederRunPercentage(-1, s_FeederMotor));
         //manuel controlls Intake
-        DriveStick.rightTrigger().and(DriveStick.povUp()).whileTrue(new IntakeRunFast(s_IntakeMotor, s_BackIntakeMotor));
-        DriveStick.rightTrigger().and(DriveStick.povDown()).whileTrue(new IntakeRunFastReverse(s_IntakeMotor, s_BackIntakeMotor));
+        // DriveStick.rightTrigger().and(DriveStick.povUp()).whileTrue(new IntakeRunFast(s_IntakeMotor, s_BackIntakeMotor));
+        // DriveStick.rightTrigger().and(DriveStick.povDown()).whileTrue(new IntakeRunFastReverse(s_IntakeMotor, s_BackIntakeMotor));
         //manuel controlls Winch
         // DriveStick.rightTrigger().and(DriveStick.povRight()).whileTrue(new WinchRun(0.5, s_WinchMotor));
         // DriveStick.rightTrigger().and(DriveStick.povLeft()).whileTrue(new WinchRun(-0.5, s_WinchMotor));

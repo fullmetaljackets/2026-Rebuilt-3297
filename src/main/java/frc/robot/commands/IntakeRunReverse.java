@@ -4,23 +4,20 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.subsystems.IntakeMotor;
 import frc.robot.subsystems.BackIntakeMotor;
-import frc.robot.subsystems.WinchMotor;
 
 
 
 /**
  */
-public class IntakeRunPercentage extends Command {
+public class IntakeRunReverse extends Command {
 
     private final IntakeMotor s_IntakeMotor;
     private final BackIntakeMotor s_BackIntakeMotor;
-    private final WinchMotor s_WinchMotor;
  
 
-    public IntakeRunPercentage( IntakeMotor subsystem, BackIntakeMotor backIntakeMotor, WinchMotor winchMotor) {
+    public IntakeRunReverse( IntakeMotor subsystem, BackIntakeMotor backIntakeMotor) {
         s_IntakeMotor = subsystem;
         s_BackIntakeMotor = backIntakeMotor;
-        s_WinchMotor = winchMotor;
         addRequirements(s_IntakeMotor, s_BackIntakeMotor);
 
     }
@@ -34,12 +31,8 @@ public class IntakeRunPercentage extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (s_WinchMotor.getWinchPosition() > -2){
-            s_IntakeMotor.IntakeMotorOneRun(0.65);
-            s_BackIntakeMotor.BackIntakeMotorOneRun(-0.65);
-        } else {
-            s_BackIntakeMotor.BackIntakeMotorOneRun(-0.65);
-        }
+        s_BackIntakeMotor.BackIntakeMotorOneRun(1);
+        s_IntakeMotor.IntakeMotorOneRun(-1);
     }
 
     // Called once the command ends or is interrupted.

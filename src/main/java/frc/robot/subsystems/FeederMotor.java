@@ -91,6 +91,13 @@ public class FeederMotor extends SubsystemBase{
         FeederMotor.set(setpoint);
         // IntakeMotor2.set(setpoint);
     }
+    public double getFeederMotorSpeed(){
+        return FeederMotor.getVelocity().getValueAsDouble();
+    }
+
+    public boolean FeederAtSetPoint(double setpoint, double tolerance){
+        return Math.abs(getFeederMotorSpeed() - setpoint) <= tolerance;
+    }
 
     private final SysIdRoutine m_sysIdRoutine = new SysIdRoutine(
         new SysIdRoutine.Config(

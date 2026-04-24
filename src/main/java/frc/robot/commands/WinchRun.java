@@ -19,7 +19,7 @@ public class WinchRun extends Command {
 
 
         s_WinchMotor = subsystem;
-        addRequirements(s_WinchMotor);
+        addRequirements();
 
     }
 

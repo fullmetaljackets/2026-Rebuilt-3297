@@ -17,7 +17,7 @@ import frc.robot.subsystems.Limelight;
 public class AimAtHub extends Command {
     private final Limelight m_limelight;
     private final double kp_Angle = 0.17;
-    private double MaxSpeed = 1; // kSpeedAt12Volts desired top speed
+    private double MaxSpeed = 0.25; // kSpeedAt12Volts desired top speed
     private final CommandXboxController DriveStick = new CommandXboxController(0);
 
     // private final double kp_Angle_Small = 0.2;
@@ -52,6 +52,8 @@ public class AimAtHub extends Command {
 
         double distanceToHub = m_limelight.getDistanceToHub(robotPose, hubpose);
         SmartDashboard.putNumber("Distance to Hub", distanceToHub);
+        
+        double angleError;
 
         double rotationToHub = Math.toDegrees(Math.atan2(
             hubpose.getY() - robotPose.getY(),
@@ -66,24 +68,23 @@ public class AimAtHub extends Command {
         }
         SmartDashboard.putNumber("Robot Rotation (deg)", robotRot);
 
-        double angleError;
         var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
 
-        if (alliance == DriverStation.Alliance.Blue) { 
-            if (robotPose.getX() < 4.6) {
-                angleError = rotationToHub - robotRot;
-            }else{
-                angleError = rotationToShuttle - robotRot;
-            }
-        }else{
-            if (robotPose.getX() > 11.9) {
-                angleError = rotationToHub - robotRot;
-            }else{
-                angleError = rotationToShuttle - robotRot;
-            }
-        }
+        // if (alliance == DriverStation.Alliance.Blue) { 
+        //     if (robotPose.getX() < 4.6) {
+        //         angleError = rotationToHub - robotRot;
+        //     }else{
+        //         angleError = rotationToShuttle - robotRot;
+        //     }
+        // }else{
+        //     if (robotPose.getX() > 11.9) {
+        //         angleError = rotationToHub - robotRot;
+        //     }else{
+        //         angleError = rotationToShuttle - robotRot;
+        //     }
+        // }
 
-        // double angleError = rotationToHub - robotRot;
+        angleError = rotationToHub - robotRot;
         SmartDashboard.putNumber("Angle Error (deg)", angleError);
         // double kp_Angle = 0.12;
         // if (angleError < 6 && angleError > 0) {

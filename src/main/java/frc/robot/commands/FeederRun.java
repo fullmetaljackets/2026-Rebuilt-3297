@@ -44,6 +44,11 @@ public class FeederRun extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (s_FeederMotor.FeederAtSetPoint(m_FeederVel, 10)){
+            s_FeederMotor.setFeederSpeed(m_FeederVel, m_FeederAcc);
+        }else{
+            s_FeederMotor.FeederMotorRun(1);
+        }
         // s_TestShooterMotor.IntakeMotorOneRun(m_FeederVel);
     }
 
