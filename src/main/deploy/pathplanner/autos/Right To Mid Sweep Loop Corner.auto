@@ -44,6 +44,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Right To Mid Sweep Loop",
   "choreoAuto": false
 }

@@ -9,7 +9,12 @@
     "Start",
     "Shoot"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "Left To Mid Sweep Loop",
+    "Left To Right Sweep Short",
+    "Right To Left Sweep Short",
+    "Right To Mid Sweep Loop"
+  ],
   "defaultMaxVel": 2.0,
   "defaultMaxAccel": 2.0,
   "defaultMaxAngVel": 540.0,

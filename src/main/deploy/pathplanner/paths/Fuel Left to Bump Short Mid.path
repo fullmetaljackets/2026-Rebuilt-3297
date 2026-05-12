@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.15684647302904545,
+      "waypointRelativePos": 0.4921161825726103,
       "rotationDegrees": 160.0
     }
   ],
@@ -53,7 +53,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0.0,
-    "rotation": -90.53545898556453
+    "rotation": -66.54097591857395
   },
   "useDefaultConstraints": true
 }

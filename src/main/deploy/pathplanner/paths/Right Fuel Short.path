@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 5.775,
-        "y": 1.7571931818181814
+        "y": 2.5
       },
       "prevControl": null,
       "nextControl": {
         "x": 5.775,
-        "y": 2.9081656868201056
+        "y": 3.650972505001924
       },
       "isLocked": false,
       "linkedName": "Fuel Right Short Sweep Start"
@@ -21,23 +21,23 @@
       },
       "prevControl": {
         "x": 5.775,
-        "y": 3.5278819779458725
+        "y": 3.527881977945874
       },
       "nextControl": {
         "x": 5.775,
-        "y": 4.542118022054128
+        "y": 4.535
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.476613636363636,
-        "y": 5.65
+        "x": 5.775,
+        "y": 5.633088888888888
       },
       "prevControl": {
-        "x": 5.837590909090909,
-        "y": 5.557238636363638
+        "x": 5.775,
+        "y": 5.223378329808185
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.2452830188679231,
+      "waypointRelativePos": 0.9145228215767661,
       "rotationDegrees": -90.0
     }
   ],
@@ -74,13 +74,13 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -143.3438915840332
+    "velocity": 0.0,
+    "rotation": -88.99491399474574
   },
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 0.5,
     "rotation": -90.0
   },
   "useDefaultConstraints": false

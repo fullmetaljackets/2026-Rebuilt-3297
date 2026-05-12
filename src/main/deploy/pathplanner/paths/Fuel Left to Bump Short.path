@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.476613636363636,
-        "y": 5.65
+        "x": 5.775,
+        "y": 5.633088888888888
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.122802525252524,
-        "y": 5.640255555555555
+        "x": 5.421188888888889,
+        "y": 5.6233444444444425
       },
       "isLocked": false,
       "linkedName": "Fuel Right Short Sweep End"
@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3161825726141054,
+      "waypointRelativePos": 0.1834024896265562,
       "rotationDegrees": 160.0
     }
   ],
@@ -53,7 +53,7 @@
   "folder": "Bump",
   "idealStartingState": {
     "velocity": 0.0,
-    "rotation": -143.3438915840332
+    "rotation": -88.99491399474574
   },
   "useDefaultConstraints": true
 }

@@ -7,31 +7,31 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 1.0
+            "waitTime": 6.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Left"
+            "pathName": "Bump to Fuel Left Short"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left Fuel Fast Short (Loop)"
+            "pathName": "Left Fuel Short"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Left Mid To Bump (Loop)"
+            "pathName": "Fuel Right to Bump Short"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Left"
+            "pathName": "Bump to Shoot Right"
           }
         },
         {
@@ -44,6 +44,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Left To Right Sweep Short",
   "choreoAuto": false
 }

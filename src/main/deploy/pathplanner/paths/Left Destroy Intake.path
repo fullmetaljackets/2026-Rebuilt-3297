@@ -48,11 +48,11 @@
     },
     {
       "anchor": {
-        "x": 6.311704545454545,
+        "x": 5.775,
         "y": 2.45
       },
       "prevControl": {
-        "x": 6.033420454545454,
+        "x": 5.496715909090909,
         "y": 2.9241136363636366
       },
       "nextControl": null,
@@ -126,7 +126,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 135.74405920288862
+    "rotation": 90.0
   },
   "reversed": false,
   "folder": "Fuel",
