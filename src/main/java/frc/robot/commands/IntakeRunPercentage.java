@@ -15,12 +15,15 @@ public class IntakeRunPercentage extends Command {
     private final IntakeMotor s_IntakeMotor;
     private final BackIntakeMotor s_BackIntakeMotor;
     private final WinchMotor s_WinchMotor;
- 
+    private final double m_IntakeVelFront;
+    private final double m_IntakeVelBack;
 
-    public IntakeRunPercentage( IntakeMotor subsystem, BackIntakeMotor backIntakeMotor, WinchMotor winchMotor) {
+    public IntakeRunPercentage(IntakeMotor subsystem, BackIntakeMotor backIntakeMotor, WinchMotor winchMotor, double intakeVelFront, double intakeVelBack) {
         s_IntakeMotor = subsystem;
         s_BackIntakeMotor = backIntakeMotor;
         s_WinchMotor = winchMotor;
+        m_IntakeVelFront = intakeVelFront;
+        m_IntakeVelBack = intakeVelBack;
         addRequirements(s_IntakeMotor, s_BackIntakeMotor);
 
     }
@@ -35,10 +38,10 @@ public class IntakeRunPercentage extends Command {
     @Override
     public void execute() {
         if (s_WinchMotor.getWinchPosition() > -2){
-            s_IntakeMotor.IntakeMotorOneRun(0.65);
-            s_BackIntakeMotor.BackIntakeMotorOneRun(-0.65);
+            s_IntakeMotor.IntakeMotorOneRun(m_IntakeVelFront);
+            s_BackIntakeMotor.BackIntakeMotorOneRun(m_IntakeVelBack);
         } else {
-            s_BackIntakeMotor.BackIntakeMotorOneRun(-0.65);
+            s_BackIntakeMotor.BackIntakeMotorOneRun(m_IntakeVelBack);
         }
     }
 

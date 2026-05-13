@@ -60,13 +60,23 @@ public class AimAtHub extends Command {
             hubpose.getX() - robotPose.getX()
         ));
         
-        double rotationToShuttle = 180;
+        // double rotationToShuttle = 180;
         SmartDashboard.putNumber("Rotation To Hub (deg)", rotationToHub);
         double robotRot = drivetrain.getState().Pose.getRotation().getDegrees() + 180;
+        SmartDashboard.putNumber("Raw Robot Rotation (deg)", robotRot);
         if (robotRot > 180){
+
             robotRot = robotRot - 360;
         }
-        SmartDashboard.putNumber("Robot Rotation (deg)", robotRot);
+        double AdjustedrobotRot = robotRot - rotationToHub;
+        // if (robotRot < rotationToHub - 180){
+
+        //     robotRot = -robotRot;
+        // }
+        // if (robotRot < -180){
+        //     robotRot = robotRot + 360;
+        // }
+        SmartDashboard.putNumber("Robot Rotation (deg)", AdjustedrobotRot);
 
         var alliance = DriverStation.getAlliance().orElse(DriverStation.Alliance.Blue);
 
@@ -84,8 +94,13 @@ public class AimAtHub extends Command {
         //     }
         // }
 
-        angleError = rotationToHub - robotRot;
+        angleError = AdjustedrobotRot;
+        if (AdjustedrobotRot > 180){
+            angleError = angleError - 360;
+            
+        }
         SmartDashboard.putNumber("Angle Error (deg)", angleError);
+
         // double kp_Angle = 0.12;
         // if (angleError < 6 && angleError > 0) {
         //     // kp_Angle = 1.5;
@@ -112,7 +127,7 @@ public class AimAtHub extends Command {
         drivetrain.setControl(
         m_alignRequest.withVelocityX(manualVelocityX * MaxSpeed) // Manual forward/backward
             .withVelocityY(manualVelocityY * MaxSpeed) // Manual left/right
-            .withRotationalRate(rotationalRate) // Auto-aimed rotation
+            .withRotationalRate(-rotationalRate) // Auto-aimed rotation
         );
 
     }

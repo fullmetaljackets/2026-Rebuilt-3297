@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 7.75,
-        "y": 7.15
+        "y": 7.0
       },
       "prevControl": null,
       "nextControl": {
         "x": 7.737189265536724,
-        "y": 6.214816384180792
+        "y": 6.064816384180792
       },
       "isLocked": false,
       "linkedName": "Fuel Left Sweep Start"

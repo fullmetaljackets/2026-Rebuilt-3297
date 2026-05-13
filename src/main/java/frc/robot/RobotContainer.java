@@ -25,6 +25,7 @@ import frc.robot.commands.AimAtHub;
 import frc.robot.commands.FeederRun;
 import frc.robot.commands.FeederRunPercentage;
 import frc.robot.commands.GetDistToHub;
+import frc.robot.commands.IntakeRun;
 import frc.robot.commands.IntakeRunPercentage;
 import frc.robot.commands.IntakeRunReverse;
 import frc.robot.commands.ShooterRun;
@@ -73,11 +74,12 @@ public class RobotContainer {
 
 
     public RobotContainer() {
-        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor));
+        NamedCommands.registerCommand("IntakeRun", new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor, 0.65, -0.65));
+        NamedCommands.registerCommand("IntakeStop", new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor, 0, 0));
         // NamedCommands.registerCommand("ShooterWarmup", new ShooterRun(34.5, 1000, s_ShooterMotor));
         NamedCommands.registerCommand("ShooterWarmup", new ShootOnMove(limelight, s_ShooterMotor, drivetrain));
-        NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain));
-        NamedCommands.registerCommand("ShootTimeout", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain).withTimeout(6));
+        NamedCommands.registerCommand("Shoot", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain, s_BackIntakeMotor, s_IntakeMotor));
+        NamedCommands.registerCommand("ShootTimeout", new Shoot3(s_ShooterMotor, s_FeederMotor, s_WinchMotor, limelight, drivetrain, s_BackIntakeMotor, s_IntakeMotor).withTimeout(6));
         NamedCommands.registerCommand("IntakeUp", new WinchRun(-0.2, s_WinchMotor));
         NamedCommands.registerCommand("IntakeHold", new WinchToSetpoint(0.1, -9.23, s_WinchMotor));
         NamedCommands.registerCommand("IntakeDown", new WinchToSetpoint(0.1, -1, s_WinchMotor));
@@ -144,7 +146,7 @@ public class RobotContainer {
         DriveStick.rightBumper().whileTrue(new FeederRun(20, 1000, s_FeederMotor, s_ShooterMotor)); // 9ft back against tower Allience wall
 
         //Intake
-        DriveStick.leftBumper().whileTrue(new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor));
+        DriveStick.leftBumper().whileTrue(new IntakeRunPercentage(s_IntakeMotor, s_BackIntakeMotor, s_WinchMotor, 0.65, -0.65));
         DriveStick.y().whileTrue(new IntakeRunReverse(s_IntakeMotor, s_BackIntakeMotor));
 
         //Winch

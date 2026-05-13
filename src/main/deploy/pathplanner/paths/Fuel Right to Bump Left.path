@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 7.451466666666667,
-        "y": 0.9070333333333334
+        "y": 0.9070333333333332
       },
       "isLocked": false,
       "linkedName": "Fuel Left Sweep End"
@@ -117,7 +117,7 @@
   },
   "goalEndState": {
     "velocity": 1.0,
-    "rotation": -88.99491399474574
+    "rotation": -88.99491399474576
   },
   "reversed": false,
   "folder": "Bump",

@@ -1,0 +1,120 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 6.779100000000001,
+        "y": 1.618377777777778
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.104344444444445,
+        "y": 1.598888888888888
+      },
+      "isLocked": false,
+      "linkedName": "fuel right sweep fast start"
+    },
+    {
+      "anchor": {
+        "x": 7.412488888891611,
+        "y": 3.421099999995854
+      },
+      "prevControl": {
+        "x": 7.812011111113832,
+        "y": 3.4016111111069653
+      },
+      "nextControl": {
+        "x": 6.9740773142633055,
+        "y": 3.4424859304655273
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.394344270626858,
+        "y": 3.443920481499812
+      },
+      "prevControl": {
+        "x": 6.684165925384727,
+        "y": 3.449070567768273
+      },
+      "nextControl": {
+        "x": 5.65848888888889,
+        "y": 3.4308444444444435
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.4,
+        "y": 2.6332727272727277
+      },
+      "prevControl": {
+        "x": 7.032455555555556,
+        "y": 2.4758888888888886
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Fuel Right Sweep Mid End New"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.45643153526970687,
+      "rotationDegrees": -89.34714294341143
+    },
+    {
+      "waypointRelativePos": 1.6,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 2.512033195020741,
+      "rotationDegrees": 137.6434372815088
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.8,
+      "maxWaypointRelativePos": 1.8,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "IntakeRun",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.25,
+    "maxAcceleration": 1.25,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 1.25,
+    "rotation": 151.0402045062716
+  },
+  "reversed": false,
+  "folder": "Fuel",
+  "idealStartingState": {
+    "velocity": 1.0,
+    "rotation": -160.11483488614448
+  },
+  "useDefaultConstraints": false
+}
