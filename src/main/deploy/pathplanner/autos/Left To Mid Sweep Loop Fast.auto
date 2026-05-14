@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Fuel Right Test"
+            "pathName": "Bump to Fuel Left Fast"
           }
         },
         {
@@ -17,7 +17,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Right Fuel Fast Short (Loop) Test"
+                  "pathName": "Left Fuel Fast Short (Loop) Fast"
                 }
               },
               {
@@ -32,13 +32,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Fuel Right Mid To Bump (Loop)"
+            "pathName": "Fuel Left Mid To Bump (Loop)"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Bump to Shoot Right"
+            "pathName": "Bump to Shoot Left"
           }
         },
         {
@@ -51,6 +51,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Right To Mid Sweep Loop",
+  "folder": "Left To Mid Sweep Loop",
   "choreoAuto": false
 }

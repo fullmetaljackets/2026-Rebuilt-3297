@@ -113,7 +113,7 @@
   "reversed": false,
   "folder": "Fuel",
   "idealStartingState": {
-    "velocity": 1.0,
+    "velocity": 1.25,
     "rotation": -160.11483488614448
   },
   "useDefaultConstraints": false

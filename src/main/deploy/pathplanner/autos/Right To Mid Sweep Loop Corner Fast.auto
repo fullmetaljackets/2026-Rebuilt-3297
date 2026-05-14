@@ -1,0 +1,62 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bump to Fuel Right Fast"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Right Fuel Fast Short (Loop) Fast"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeRun"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Fuel Right Mid To Bump (Loop) corner"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AimAtHub"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ShootTimeout"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Bump To Mid"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Right To Mid Sweep Loop",
+  "choreoAuto": false
+}
